@@ -1,2 +1,61 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div id="main" class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form id="contact-form" class="">
+                <div class="form-group">
+                    <label class="" for="firstName">First Name</label>
+                    <input class="form-control" name="firstName" placeholder="tim">
+                </div>
+                <div class="form-group">
+                    <label class="" for="lastName">First Name</label>
+                    <input class="form-control" name="lastName" placeholder="holder">
+                </div>
+                <div class="form-group">
+                    <label class="" for="email">Email</label>
+                    <input class="form-control" name="email" placeholder="tim.holder@gmail.com">
+                </div>
+                <div class="form-group">
+                    <label class="" for="confirm-email">Confirm Email</label>
+                    <input class="form-control" name="confirm-email" placeholder="tim.bob@gmail.com">
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="margin: 10px auto;">
+                        <label class="">Country: <span class="badge bg-success" data-country></span></label>
+                        <label>ip: <span class="badge bg-success" data-ip></span></label>
+                    </div>
+                </div>
+            </form>
+            <div class="text-center">
+                <button id="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{#section 'scripts'}}
+    <script src="/javascripts/app.bundle.js"></script>
+    <script>
+        $(document).ready(function () {
+          $('#contact-form').submit(function () {
+              return true
+          })
+            $('#submit').click(function () {
+                App.submit()
+            })
+            App.geoLocate(function (ip) {
+                $.ajax({
+                    method: 'GET',
+                    url: '/geo-locate?ip=' + ip,
+                }).done(function (data) {
+                    $('[data-country]').text(data.country)
+                    $('[data-ip]').text(ip)
+                    console.log(data)
+//                    return cb(r)
+                }).fail(function (e) {
+                    console.error(e)
+                })
+            })
+        })
+    </script>
+{{/section}}
+
