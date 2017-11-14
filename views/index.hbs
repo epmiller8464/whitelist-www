@@ -18,14 +18,70 @@
                     <label class="" for="confirm-email">Confirm Email</label>
                     <input class="form-control" name="confirm-email" placeholder="tim.bob@gmail.com">
                 </div>
-                <div class="row">
-                    <div class="col-md-12" style="margin: 10px auto;">
-                        <label class="">Country: <span class="badge bg-success" data-country></span></label>
-                        <label>ip: <span class="badge bg-success" data-ip></span></label>
+                <label>You must enter your Slack username and/or Telegram username to be eligible for whitelisting.</label>
+                <hr/>
+                <div class="form-group">
+                    <label class="" for="slack-handle">What's your Slack handle?</label>
+                    <input class="form-control" name="slack-handle">
+                </div>
+                <div class="form-group">
+                    <label class="" for="telegram-handle">What's your Telegran handle?</label>
+                    <input class="form-control" name="telegram-handle">
+                </div>
+                <label>Please indicate the amount with which you want to participate in the token sale (in USD) <span class="text-danger">*</span></label>
+                <hr/>
+                <div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="0-100">USD > 100
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="100-1000">USD 100 -
+                            1,000
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="1000-5000">USD 1,000 -
+                            5,000
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="5000-10000">USD 5,000 -
+                            10,000
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="10000-50000">USD 10,000
+                            - 50,000
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="50000-100000">USD 50,000
+                            - 100,000
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="100000-MAX">USD +100,000
+                        </label>
                     </div>
                 </div>
             </form>
+            <hr/>
+            <div class="row">
+                <div class="col-md-12 text-center" style="margin: 10px auto;">
+                    <label class="">Country: <span class="badge bg-success" data-country></span></label>
+                    <label>ip: <span class="badge bg-success" data-ip></span></label>
+                </div>
+            </div>
             <div class="text-center">
+
                 <button id="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
@@ -36,13 +92,13 @@
     <script src="/javascripts/app.bundle.js"></script>
     <script>
         $(document).ready(function () {
-          $('#contact-form').submit(function () {
-              return true
-          })
+            $('#contact-form').submit(function () {
+                return true
+            })
             $('#submit').click(function () {
                 App.submit()
             })
-            App.geoLocate(function (ip) {
+            App.geoLocate(function (err, ip) {
                 $.ajax({
                     method: 'GET',
                     url: '/geo-locate?ip=' + ip,

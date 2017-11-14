@@ -15,4 +15,35 @@ a {
 .badge.bg-success {
   background-color: #35be71; }
 
+.js .loading::before,
+.js .loading::after {
+  content: '';
+  position: fixed;
+  z-index: 2000; }
+
+.loading::before {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(44, 45, 49, 0.7);
+  background-image: url("../images/pattern.png"); }
+
+.loading::after {
+  top: 33%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border: 8px solid #383a41;
+  border-bottom-color: #565963;
+  border-radius: 50%;
+  animation: animLoader 0.8s linear infinite forwards; }
+
+@-webkit-keyframes animLoader {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
 /*# sourceMappingURL=style.css.map */
