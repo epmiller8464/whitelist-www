@@ -4,6 +4,6 @@
 module.exports = {
   // MongoDB connection options
   db: {
-    mongoDbUri: process.env.MONGODB_URI
+    MONGO_DB_URI: process.env.MONGODB_URI
   }
 }

@@ -4,10 +4,8 @@
 
 module.exports = {
   // MongoDB connection options
-  port: 3001,
   db: {
-    mongoDbUri: 'mongodb://localhost/em-vm-db'
-  },
-  audio_bucket: 'em-io-test-bucket'
+    MONGO_DB_URI: process.env.MONGODB_URI
+  }
 };
 //# sourceMappingURL=development.js.map
