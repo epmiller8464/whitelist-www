@@ -1,11 +1,12 @@
 @font-face {
-  font-family: "knarfart";
+  font-family: 'knarfart';
   font-weight: normal;
   font-style: normal;
   src: url("../fonts/knarfart/knarfart-webfont.eot");
   src: url("../fonts/knarfart/knarfart-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/knarfart/knarfart-webfont.woff2") format("woff2"), url("../fonts/knarfart/knarfart-webfont.woff") format("woff"), url("../fonts/knarfart/knarfart-webfont.ttf") format("truetype"), url("../fonts/knarfart/knarfart-webfont.svg#knarfart") format("svg"); }
+
 body {
-  font-family: "Roboto Mono", monospace;
+  font-family: 'Roboto Mono', monospace;
   font-size: 14px;
   text-rendering: geometricPrecision;
   color: #fff; }
@@ -28,7 +29,7 @@ a {
 
 .js .loading::before,
 .js .loading::after {
-  content: "";
+  content: '';
   position: fixed;
   z-index: 2000; }
 
@@ -56,6 +57,7 @@ a {
     transform: rotate(0deg); }
   100% {
     transform: rotate(360deg); } }
+
 .content {
   position: relative;
   min-height: 100vh;
