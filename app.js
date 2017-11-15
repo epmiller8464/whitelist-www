@@ -11,9 +11,12 @@ const uuid = require('uuid')
 const session = require('express-session')
 var sslRedirect = require('./lib/ssl-redirect')
 const moment = require('moment')
+const compression = require('compression')
 var index = require('./routes/index')
 let app = express()
+app.use(compression())
 app.use(sslRedirect(['test', 'production']))
+
 app.disable('x-powered-by')
 // view engine setup
 var exphbs = hbs.create({

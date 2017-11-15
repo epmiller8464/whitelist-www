@@ -1,20 +1,88 @@
+@font-face
+  font-family: 'knarfart'
+  font-weight: normal
+  font-style: normal
+  src: url('../fonts/knarfart/knarfart-webfont.eot')
+  src: url('../fonts/knarfart/knarfart-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/knarfart/knarfart-webfont.woff2') format('woff2'), url('../fonts/knarfart/knarfart-webfont.woff') format('woff'), url('../fonts/knarfart/knarfart-webfont.ttf') format('truetype'), url('../fonts/knarfart/knarfart-webfont.svg#knarfart') format('svg')
+
+
+$opacity: 1
+
+$orange: rgba(239, 83, 80, 1)
+$pink: rgb(255, 0, 128)
+$drk-pink: rgba(255, 13, 81, 1)
+$danger: #b71c1c
+$drk-grey: rgba(72, 71, 81, 1)
+$grey: rgba(122, 121, 131, 1)
+
+$green: rgba(0, 255, 72, 1)
+
+//$dark-bg: rgba(29, 27, 34, 1)
+$dark: rgba(35, 34, 42, 1)
+$dark-bg: rgba(30, 29, 35, 1)
+
+//$dark-bg: #1e1d23
+$b: #00DFFC
+$blue: #2196f3
+$grn-blue: #0DE5A8
+$grn-blue: #0AABBA
+
+$yellow: #ffeb3b
+$neon-yellow: #BFFA37
+
+@mixin alpha-orange($o: $opacity)
+  color: rgba(239, 83, 80, $o) !important
+
+@mixin alpha-pink($o: $opacity)
+  color: rgba(255, 0, 128, $o) !important
+
+@mixin alpha-drk-pink($o: $opacity)
+  color: rgba(255, 13, 81, $o) !important
+
+@mixin alpha-grey($o: $opacity)
+  color: rgba(122, 121, 131, $o) !important
+
+@mixin alpha-drk-grey($o: $opacity)
+  color: rgba(72, 71, 81, $o) !important
+
+@mixin alpha-green($o: $opacity)
+  color: rgba(0, 255, 72, $o) !important
+
+@mixin alpha-dark($o: $opacity)
+  color: rgba(35, 34, 42, $o) !important
+
+@mixin alpha-dark-bg($o: $opacity)
+  color: rgba(30, 29, 35, $o) !important
+
 body
-  padding: 50px
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
+  //padding: 50px
+  font-family: 'Roboto Mono', monospace
+  font-size: 14px
+  text-rendering: geometricPrecision
+  color: #fff
 
 a
   color: #00B7FF
+.logo
+  font-size: 3em
 
 .logo img
   width: 150px
   height: auto
 
-#main
-  margin: 100px auto 50px auto
+.fart
+  //font-family: 'knarfart'
+  //-webkit-font-smoothing: antialiased
+  //-moz-osx-font-smoothing: grayscale
+  color:  #35be71
+
+//#main
+//  //margin: 100px auto 50px auto
+//  position: relative
+//  z-index: 100
 
 .badge.bg-success
   background-color: #35be71
-
 
 .js .loading::before,
 .js .loading::after
@@ -47,4 +115,138 @@ a
   100%
     transform: rotate(360deg)
 
+.content
+  position: relative
+  min-height: 100vh
+  padding: 10vh 0 0
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+.content--highlight
+  padding: 0
+  background: rgba(0, 0, 0, 0.8)
+
+.content--nopadding
+  padding: 0
+
+.content--boxes
+  min-height: 70vh
+
+.content__inner
+  position: relative
+  z-index: 10
+  max-width: 992px
+  margin: 0 auto
+  text-align: center
+//pointer-events: none
+
+#touch .content__inner
+  padding-top: 10vh
+
+.content__inner--fheight
+  height: 60vh
+
+.content__inner--half
+  flex: none
+  width: 50%
+  max-width: none
+  height: auto
+  padding: 15vh calc(25vw - 220px)
+
+.content__inner--half .content__title
+  font-size: 2.25em
+  margin-bottom: 0.5em
+  text-transform: uppercase
+
+.content__inner--half .content__subtitle
+  font-size: 1.75em
+
+.content__inner--half .link-more
+  color: rgba(0, 0, 0, 0.3)
+
+.content__inner--c1
+  background: #4d61c5
+
+.content__inner--c2
+  background: #f7f4ec
+
+.content__inner--c3
+  background: #cc8969
+
+.content__title
+  line-height: 1.25
+  position: relative
+  z-index: 10
+  margin: 0
+  padding: 0 5vmax 0 5vmax
+  //color: rgba(239, 83, 80, 0.7)
+  color: $drk-grey
+
+.content__title--color
+  color: $orange
+
+.content__title--light
+  color: #f7f4ec
+
+.content__title--center
+  text-align: center
+
+.content__title .icon
+  font-size: 0.45em
+  display: inline-block
+  margin: 0 0.25em
+  color: #5b5d69
+
+.content__subtitle
+  font-size: 2.5em
+  font-weight: normal
+  margin: 0.5em 0 1em
+
+.content__subtitle--light
+  color: #f7f4ec
+
+.content--bg
+  background-position: 50% 50%
+  background-size: cover
+
+.content-bg-overlay
+  position: relative
+  z-index: 10
+  margin: 0 auto
+  text-align: center
+
+.content.content--bg.content-bg-overlay
+  padding: 0 !important
+
+.overlay-dark
+  background-color: rgba(0, 0, 0, 0.8)
+//background-color: rgba(0, 0, 0, 0.9)
+
+.overlay-light
+  background-color: rgba(0, 0, 0, 0.3)
+
+.content--nasa
+  background-image: url(../images/unsplash/nasa-53884.jpg)
+
+.content--solar-desert
+  background-image: url(../images/unsplash/antonio-garcia-339626.jpg)
+
+
+#particles-js
+  position: absolute
+  z-index: -1
+  height: 100%
+  width: 100%
+//position: absolute
+  //top: 0
+  //left: 0
+  //width: 100%
+  //height: 100%
+  //opacity: 0.5
+
+input.form-control
+  background: transparent !important
 
