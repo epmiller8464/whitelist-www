@@ -14,8 +14,8 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/timeline.css"/>
     {{{_sections.head}}}
     <script type="text/javascript"> //<![CDATA[
-    var tlJsHost = ((window.location.protocol == "https:") ? "https://secure.comodo.com/" : "http://www.trustlogo.com/");
-    document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E"));
+    var tlJsHost = ((window.location.protocol == 'https:') ? 'https://secure.comodo.com/' : 'http://www.trustlogo.com/')
+    document.write(unescape('%3Cscript src=\'' + tlJsHost + 'trustlogo/javascript/cot.js\' type=\'text/javascript\'%3E%3C/script%3E'))
     //]]>
     </script>
 </head>
@@ -37,13 +37,14 @@
                 </svg>
             </a>
         </div>
-
+        <div class="pull-right">
+        </div>
     </div>
 </footer>
 <script language="JavaScript" type="text/javascript">
-    TrustLogo("https://register.swytch.io/images/comodo_secure_seal_113x59_transp.png", "CL1", "none");
+    COT('https://register.swytch.io/images/comodo_secure_seal_113x59_transp.png', 'CL1', 'none')
 </script>
-<a  href="https://ssl.comodo.com/wildcard-ssl-certificates.php" id="comodoTL">Wildcard SSL</a>
+<a href="https://ssl.comodo.com/wildcard-ssl-certificates.php" id="comodoTL">Wildcard SSL</a>
 </body>
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
