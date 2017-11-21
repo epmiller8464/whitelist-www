@@ -3,7 +3,7 @@ const webpack = require('webpack')
 module.exports = {
   entry: './lib/app.js',
   output: {
-    filename: './public/javascripts/app.bundle.js'
+    filename: './public/javascripts/app.bundle.min.js'
   },
   module: {
     loaders: [
@@ -16,6 +16,9 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin()
+  ],
   stats: {
     colors: true
   },

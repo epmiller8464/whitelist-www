@@ -15,6 +15,7 @@ module.exports = function () {
     email: {
       type: String,
       trim: true,
+      unique: true,
       lowercase: true,
       required: true,
       minLength: 1,
@@ -25,11 +26,31 @@ module.exports = function () {
         return encrypt(v);
       }
     },
-    ip: String,
-    purchaseAmount: String,
+    ip: {
+      type: String,
+      get: function get(v) {
+        return decrypt(v);
+      },
+      set: function set(v) {
+        return encrypt(v);
+      }
+    },
+    pwh: { String: String },
+    salt: { String: String },
+    purchaseAmount: {
+      type: String,
+      get: function get(v) {
+        return decrypt(v);
+      },
+      set: function set(v) {
+        return encrypt(v);
+      }
+    },
+    cryptoType: { type: String },
     country: String,
     verified: { type: Boolean, default: false, required: true },
     createDate: { type: Date, default: Date.now, required: true },
+    publicHandles: { type: mongoose.Schema.Types.Object },
     meta: { type: mongoose.Schema.Types.Object }
   }, { collection: 'whitelist' });
 

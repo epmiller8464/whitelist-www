@@ -2,6 +2,7 @@
 
 process.env.NODE_ENV = 'development';
 require('dotenv').config();
+var faker = require('faker');
 require('../lib/db')(function () {});
 
 var _require = require('../lib/model'),
@@ -11,18 +12,24 @@ var _require = require('../lib/model'),
 
 test('whitelist', function (done) {
   var wl = new Whitelist({
-    email: 'tom.jones@test.com',
-    firstName: 'er',
-    lastName: 'me',
-    ip: '127.0.0.1',
+    email: faker.internet.email(),
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
+    ip: faker.internet.ip(),
     purchaseAmount: '1000-5000',
-    country: 'US'
+    cryptoType: 'ETH',
+    country: 'US',
+    public_handles: {
+      keybase: {
+        username: 'ghost_mac'
+      }
+    }
   });
 
   wl.save(function (error, doc) {
     expect(error).toBe(null);
     // expect(doc).toBeGreaterThan(0)
-    console.log(doc.email);
+    console.log(doc.toObject());
     done();
   });
 });

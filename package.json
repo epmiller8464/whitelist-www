@@ -9,6 +9,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@sendgrid/mail": "^6.1.4",
     "async": "^2.6.0",
     "bcrypt": "^1.0.3",
     "body-parser": "~1.18.2",
@@ -30,12 +31,15 @@
     "helmet": "^3.9.0",
     "jquery": "^3.2.1",
     "jsonwebtoken": "^8.1.0",
+    "lodash": "^4.17.4",
     "moment": "^2.19.2",
     "mongoose": "^4.13.2",
     "morgan": "~1.9.0",
+    "nets": "^3.2.0",
     "node-sass-middleware": "0.9.8",
     "path": "^0.12.7",
     "public-ip": "^2.3.5",
+    "scrypt": "^6.0.3",
     "sendgrid": "^5.2.3",
     "serve-favicon": "~2.4.5",
     "underscore": "^1.8.3",
@@ -50,6 +54,7 @@
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-react": "^7.4.0",
     "eslint-plugin-standard": "^3.0.1",
+    "faker": "^4.1.0",
     "jest": "^21.2.1",
     "standard": "^10.0.3",
     "webpack": "^3.8.1"

@@ -1,21 +1,58 @@
+.text-primary {
+  color: #1d2d38 !important; }
+
+.text-success {
+  color: #1fdb6a !important; }
+
+.text-danger {
+  color: #ff0f2f !important; }
+
+.alert-success {
+  background-color: rgba(31, 219, 106, 0.8);
+  color: ghostwhite; }
+
+.alert-danger {
+  background-color: rgba(255, 15, 47, 0.8);
+  color: ghostwhite; }
+
 body {
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Roboto', sans-serif;
   font-size: 14px;
   text-rendering: geometricPrecision;
-  color: #fff; }
+  color: ghostwhite;
+  background-color: #1d2d38; }
 
 a {
-  color: #00B7FF; }
+  color: #1d2d38; }
 
-.logo {
-  font-size: 3em; }
+footer {
+  background-color: #C7FF00;
+  margin: 0;
+  padding: 20px 0; }
 
-.logo img {
-  width: 150px;
-  height: auto; }
+select {
+  background-color: transparent !important; }
+
+input.form-control {
+  color: ghostwhite !important;
+  background: transparent !important; }
+
+select,
+.form-control::placeholder {
+  color: rgba(248, 248, 255, 0.8) !important; }
+
+.logo,
+.logo svg {
+  color: #1d2d38;
+  fill: #1d2d38;
+  margin: 20px 10px 20px 10px !important; }
+
+.logo-small svg {
+  height: 25px;
+  width: 80px; }
 
 .badge.bg-success {
-  background-color: #35be71; }
+  background-color: #1fdb6a; }
 
 .js .loading::before,
 .js .loading::after {
@@ -73,10 +110,6 @@ a {
   z-index: 10;
   max-width: 992px;
   margin: 0 auto; }
-
-#main .content__inner {
-  padding-top: 10vh;
-  padding-bottom: 10vh; }
 
 .info-row p {
   font-size: 1em !important;
@@ -150,7 +183,9 @@ a {
 .content-bg-overlay {
   position: relative;
   z-index: 10;
-  margin: 0 auto; }
+  margin: 0 auto;
+  background-position: 50% 50%;
+  background-size: cover; }
 
 .content.content--bg.content-bg-overlay {
   padding: 0 !important; }
@@ -161,11 +196,14 @@ a {
 .overlay-bg-solar {
   background-color: rgba(0, 0, 0, 0.8); }
 
+.overlay-bg-light {
+  background-color: rgba(255, 255, 255, 0.8); }
+
 .content--nasa {
   background-image: url(../images/unsplash/nasa-53884.jpg); }
 
 .content--solar-desert {
-  background-image: url(../images/unsplash/antonio-garcia-339626.jpg); }
+  background-image: url(../images/unsplash/solar-desert.jpg); }
 
 #particles-js {
   position: absolute;
@@ -173,7 +211,61 @@ a {
   height: 100%;
   width: 100%; }
 
-input.form-control {
-  background: transparent !important; }
+.navbar-light {
+  background-color: transparent; }
+
+path.fingerprint {
+  fill: #1fdb6a; }
+
+.section-hero {
+  position: relative;
+  width: 100vw;
+  height: 100%;
+  margin: 0 auto;
+  background-size: cover;
+  background-position: 50% 50%; }
+
+.section-hero > .section-overlay > div.container {
+  padding: 120px 0; }
+
+.hero-solar {
+  background-image: url("../images/unsplash/solar-desert.jpg"); }
+
+.section-overlay {
+  width: 100vw;
+  height: 100%;
+  background-image: -webkit-linear-gradient(270deg, #169d4c, rgba(25, 103, 66, 0.95) 0%, rgba(29, 45, 56, 0.9) 34%, rgba(22, 34, 42, 0.92));
+  background-image: linear-gradient(180deg, #169d4c, rgba(25, 103, 66, 0.95) 0%, rgba(29, 45, 56, 0.9) 34%, rgba(22, 34, 42, 0.92));
+  opacity: 1;
+  color: #fff; }
+
+.section-gradient-overlay {
+  width: 100vw;
+  height: 100%;
+  background-image: -webkit-linear-gradient(270deg, #169d4c, rgba(25, 103, 66, 0.95) 0%, rgba(29, 45, 56, 0.9) 34%, rgba(22, 34, 42, 0.92));
+  background-image: linear-gradient(180deg, #169d4c, rgba(25, 103, 66, 0.95) 0%, rgba(29, 45, 56, 0.9) 34%, rgba(22, 34, 42, 0.92));
+  opacity: 1;
+  color: #fff; }
+
+.timeline-container {
+  width: 50%;
+  margin: 0 auto !important; }
+
+#timeline-section {
+  margin: 0 auto !important; }
+
+#timeline-section .page-header,
+#main .page-header {
+  margin: 10px auto 20px auto !important;
+  width: 50%;
+  padding-bottom: 20px !important;
+  text-align: center; }
+
+#timeline-section .container-fluid {
+  padding-top: 50px !important;
+  padding-bottom: 50px !important; }
+
+.info-left {
+  padding-top: 10vh; }
 
 /*# sourceMappingURL=style.css.map */

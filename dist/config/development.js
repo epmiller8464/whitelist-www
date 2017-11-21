@@ -1,9 +1,2 @@
-'use strict';
-// Development specific configuration
-// ==================================
-
-module.exports = {
-  // MongoDB connection options
-
-};
+"use strict";
 //# sourceMappingURL=development.js.map

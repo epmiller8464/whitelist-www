@@ -1,30 +1,16 @@
-/*@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");*/
-/*body {*/
 
-/*font-family: "Open Sans", sans-serif;*/
-/*!* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#bea2e7+0,86b7e7+100 *!*/
-/*background: #bea2e7;*/
-/*!* Old browsers *!*/
-/*background: -moz-linear-gradient(top, #bea2e7 0%, #86b7e7 100%);*/
-/*!* FF3.6-15 *!*/
-/*background: -webkit-linear-gradient(top, #bea2e7 0%, #86b7e7 100%);*/
-/*!* Chrome10-25,Safari5.1-6 *!*/
-/*background: linear-gradient(to bottom, #bea2e7 0%, #86b7e7 100%);*/
-/*!* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ *!*/
-/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bea2e7', endColorstr='#86b7e7',GradientType=0 );*/
-/*!* IE6-9 *!*/
-/*}*/
 #timeline {
     /*height: 100vh;*/
     position: relative;
     text-align: left;
-    /*margin: 0 auto;*/
+    margin: 20px auto;
+    max-width: 25vw;
 }
 
 #timeline ul {
     list-style: none;
     position: relative;
-    padding: 1px 25vw;
+    padding: 1px 0;
     color: #fff;
     font-size: 13px;
 }
@@ -102,8 +88,8 @@
 
 #timeline span.number span {
     position: absolute;
-    font-size: 10px;
-    left: -5vw;
+    font-size: 1em;
+    left: -90px;
     font-weight: bold;
 }
 

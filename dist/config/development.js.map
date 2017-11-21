@@ -1,1 +1,1 @@
-{"version":3,"sources":["../../config/development.js"],"names":["module","exports"],"mappings":"AAAA;AACA;AACA;;AACAA,OAAOC,OAAP,GAAiB;AACf;;AADe,CAAjB","file":"development.js","sourcesContent":["'use strict'\n// Development specific configuration\n// ==================================\nmodule.exports = {\n  // MongoDB connection options\n\n}\n"]}
+{"version":3,"sources":[],"names":[],"mappings":"","file":"development.js","sourcesContent":[]}

@@ -1,14 +1,138 @@
-<!--<section id="touch" class="content content--bg content--solar-desert content--nopadding">-->
-<!--<div class="content content--bg content-bg-overlay overlay-dark">-->
-<section id="main" class="content content--bg content--nasa content--nopadding">
-    <div class="content content--bg content-bg-overlay overlay-dark">
-        <div id="particles-js">
+{{#section  'head'}}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{{/section}}
+<section id="main" class="section-hero hero-solar">
+    <div class="section-overlay">
+        <div class="navbar-top navbar-light">
+            <div class="container-fluid">
+                <div class="navbar-brand">
+                    <a class="" href="http://www.swytch.io">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                             height="49.11222839355469" width="190.37362670898438"
+                             viewBox="0 0 190.37362670898438 49.11222839355469">
+                            <defs id="SvgjsDefs1064"></defs>
+                            <g id="SvgjsG1065" rel="mainfill" name="main_text" xmlns:name="mainText_mainfill"
+                               fill="#ffffff"
+                               transform="translate(-1.7079908847808838,-16.773324966430664)">
+                                <path d="M1.9928 52.23089999999999 l0.65003 -0.7318 c0.28475 -0.28514 0.56949 -0.24447 0.81397 -0.041077 c0.52881 0.44746 4.0271 4.4746 9.2339 4.4746 c6.4678 0 8.7051 -3.7424 8.7051 -6.7525 c0 -4.8 -5.5729 -6.1017 -10.495 -7.8102 c-4.3521 -1.5458 -8.542 -3.661 -8.542 -8.2983 c0 -4.1085 3.0102 -8.2983 10.21 -8.2983 c4.9627 0 8.5831 3.0508 9.5593 3.8237 c0.28475 0.24407 0.32542 0.48814 0.16271 0.7322 l-0.61017 0.81356 c-0.20339 0.28475 -0.40678 0.28475 -0.61017 0.081755 c-0.61017 -0.40719 -3.9051 -3.4987 -8.5017 -3.4987 c-5.2881 0 -8.1763 2.7254 -8.1763 6.3458 c0 4.1492 4.3932 5.4915 9.9254 7.4034 c3.9051 1.4237 9.1119 3.4576 9.1119 8.7051 c0 4.7191 -4.2301 8.664 -10.739 8.664 c-5.9797 0 -9.6 -3.945 -10.576 -4.8809 c-0.24407 -0.24407 -0.40678 -0.44746 -0.12203 -0.7322 z M69.76301694915254 24.975999999999992 c0.20339 0 0.40719 0.24486 0.20379 0.65166 l-15.092 31.729 c-0.080957 0.20339 -0.24367 0.3657 -0.44705 0.3657 l-0.40678 0 c-0.20339 0 -0.3661 -0.16231 -0.48814 -0.3657 l-5.3695 -11.349 l-5.3691 11.431 c-0.12203 0.16231 -0.28475 0.32503 -0.48814 0.32503 l-0.40678 0 c-0.20339 0 -0.3661 -0.16271 -0.44746 -0.32503 l-15.092 -31.77 c-0.20339 -0.3661 0 -0.61017 0.20299 -0.61017 l1.6271 0 c0.28475 0 0.3661 0.20339 0.52881 0.56908 l13.383 28.8 l4.9627 -10.739 l-8.5017 -18.061 c-0.20299 -0.40678 0 -0.65085 0.20339 -0.65085 l1.6271 0 c0.28475 0 0.32542 0.20339 0.52881 0.61058 l7.2403 15.701 l7.2407 -15.661 c0.20339 -0.3657 0.24407 -0.56908 0.52881 -0.56908 l1.6674 0 c0.20339 0 0.3661 0.24407 0.16271 0.61017 l-8.5013 18.02 l4.9623 10.658 l13.383 -28.759 c0.16271 -0.40719 0.24407 -0.61058 0.52881 -0.61058 l1.6267 0 z M100.39240677966102 25.057999999999993 c0.12203 0 0.24486 0.16231 0.12283 0.28435 l-13.383 18.631 l0 13.18 c0 0.32542 -0.12203 0.44746 -0.40678 0.44746 l-0.97627 0 c-0.48814 0 -0.65085 -0.24367 -0.65085 -0.7318 l0 -12.895 l-13.383 -18.631 c-0.12203 -0.12203 0 -0.28475 0.12203 -0.28475 l1.7894 0 c0.12203 0 0.24407 0.12203 0.32542 0.28475 l12.163 16.678 l12.122 -16.678 c0.12203 -0.16271 0.20299 -0.28475 0.3657 -0.28475 l1.7898 0 z M127.72810169491525 25.057999999999993 c0.28514 0 0.3665 0.080957 0.3665 0.44705 l0 1.0983 c0 0.28475 -0.081356 0.40678 -0.3665 0.40678 l-11.146 0 l0 30.142 c0 0.32542 -0.081356 0.44746 -0.3665 0.44746 l-0.97587 0 c-0.48814 0 -0.69153 -0.24367 -0.69153 -0.7318 l0 -29.858 l-11.105 0 c-0.28475 0 -0.44746 -0.081356 -0.44746 -0.40678 l0 -1.0983 c0 -0.32542 0.12203 -0.44746 0.44746 -0.44746 l24.285 0 z M160.31142372881357 52.39359999999999 c0.20339 0.20339 0.081755 0.48895 -0.28435 0.85505 c-3.0102 2.8881 -6.7119 4.6369 -11.593 4.6369 c-9.1932 0 -16.678 -7.2809 -16.678 -16.515 s7.4847 -16.597 16.678 -16.597 c4.5559 0 8.6644 1.7085 11.675 4.5966 c0.3661 0.3661 0.44746 0.61017 0.24407 0.77288 l-0.97627 0.81356 c-0.20299 0.20339 -0.3657 0.24367 -0.65044 -0.041077 c-1.75 -1.7492 -5.3703 -4.1492 -9.9262 -4.1492 c-10.047 0 -15.01 8.0542 -15.01 14.603 c0 6.6301 4.9627 14.522 15.01 14.522 c4.5559 0 7.9322 -2.3186 9.8034 -4.1085 c0.28475 -0.28475 0.48814 -0.44746 0.69153 -0.24407 z M191.63376271186442 25.057999999999993 c0.32542 0 0.44786 0.12203 0.44786 0.40678 l0 31.769 c0 0.24407 -0.081356 0.3661 -0.3661 0.3661 l-0.97627 0 c-0.44746 0 -0.65085 -0.24367 -0.65085 -0.65044 l0 -14.4 l-22.698 0 l0 14.603 c0 0.28514 -0.081356 0.44746 -0.3661 0.44746 l-1.1797 0 c-0.32542 0 -0.44746 -0.12203 -0.44746 -0.44746 l0 -31.688 c0 -0.28475 0.081356 -0.40678 0.44746 -0.40678 l1.139 0 c0.28475 0 0.40678 0.12203 0.40678 0.40678 l0 15.092 l22.698 0 l0 -15.092 c0 -0.28475 0.081356 -0.40678 0.40678 -0.40678 l1.1386 0 z"></path>
+                            </g>
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="content__inner flexy flexy--center">
-            <h2 class="title br br-o text-center">Swytch Token Generation Event (TGE) white list</h2>
-            <div class="row info-row">
+        <div class="container">
+            <div>
+                <div class="page-header text-center">
+                    <h2 class="text-center">Swytch Pre-Sale Whitelist Registration</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="">
+                        <p><b>Dear Supporter</b>,
+                            <br>Swytch, as a socially responsible business and focusing on the safety of your
+                            contributions, requires everyone to go through the identification procedure and whitelist
+                            their
+                            crypto wallet addresses.
+                        </p>
+                        <p>
+                            Moreover, to make contribution process easier during the ICO day, we will require you to
+                            assess
+                            and confirm Swytch token sale terms & conditions.
+                        </p>
+                        <p>
+                            Our mission is clear, the need is obvious, and the solution is sound. We look forward to
+                            working
+                            with you to accelerate the Swytch to a sustainable and equitable energy future.
+                        </p>
+                        <p>Thank you for your support,</p>
+                        <span class="logo-small">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                             height="49.11222839355469" width="190.37362670898438"
+                             viewBox="0 0 190.37362670898438 49.11222839355469">
+                            <defs id="SvgjsDefs1064"></defs>
+                            <g id="SvgjsG1065" rel="mainfill" name="main_text" xmlns:name="mainText_mainfill"
+                               fill="#ffffff"
+                               transform="translate(-1.7079908847808838,-16.773324966430664)">
+                                <path d="M1.9928 52.23089999999999 l0.65003 -0.7318 c0.28475 -0.28514 0.56949 -0.24447 0.81397 -0.041077 c0.52881 0.44746 4.0271 4.4746 9.2339 4.4746 c6.4678 0 8.7051 -3.7424 8.7051 -6.7525 c0 -4.8 -5.5729 -6.1017 -10.495 -7.8102 c-4.3521 -1.5458 -8.542 -3.661 -8.542 -8.2983 c0 -4.1085 3.0102 -8.2983 10.21 -8.2983 c4.9627 0 8.5831 3.0508 9.5593 3.8237 c0.28475 0.24407 0.32542 0.48814 0.16271 0.7322 l-0.61017 0.81356 c-0.20339 0.28475 -0.40678 0.28475 -0.61017 0.081755 c-0.61017 -0.40719 -3.9051 -3.4987 -8.5017 -3.4987 c-5.2881 0 -8.1763 2.7254 -8.1763 6.3458 c0 4.1492 4.3932 5.4915 9.9254 7.4034 c3.9051 1.4237 9.1119 3.4576 9.1119 8.7051 c0 4.7191 -4.2301 8.664 -10.739 8.664 c-5.9797 0 -9.6 -3.945 -10.576 -4.8809 c-0.24407 -0.24407 -0.40678 -0.44746 -0.12203 -0.7322 z M69.76301694915254 24.975999999999992 c0.20339 0 0.40719 0.24486 0.20379 0.65166 l-15.092 31.729 c-0.080957 0.20339 -0.24367 0.3657 -0.44705 0.3657 l-0.40678 0 c-0.20339 0 -0.3661 -0.16231 -0.48814 -0.3657 l-5.3695 -11.349 l-5.3691 11.431 c-0.12203 0.16231 -0.28475 0.32503 -0.48814 0.32503 l-0.40678 0 c-0.20339 0 -0.3661 -0.16271 -0.44746 -0.32503 l-15.092 -31.77 c-0.20339 -0.3661 0 -0.61017 0.20299 -0.61017 l1.6271 0 c0.28475 0 0.3661 0.20339 0.52881 0.56908 l13.383 28.8 l4.9627 -10.739 l-8.5017 -18.061 c-0.20299 -0.40678 0 -0.65085 0.20339 -0.65085 l1.6271 0 c0.28475 0 0.32542 0.20339 0.52881 0.61058 l7.2403 15.701 l7.2407 -15.661 c0.20339 -0.3657 0.24407 -0.56908 0.52881 -0.56908 l1.6674 0 c0.20339 0 0.3661 0.24407 0.16271 0.61017 l-8.5013 18.02 l4.9623 10.658 l13.383 -28.759 c0.16271 -0.40719 0.24407 -0.61058 0.52881 -0.61058 l1.6267 0 z M100.39240677966102 25.057999999999993 c0.12203 0 0.24486 0.16231 0.12283 0.28435 l-13.383 18.631 l0 13.18 c0 0.32542 -0.12203 0.44746 -0.40678 0.44746 l-0.97627 0 c-0.48814 0 -0.65085 -0.24367 -0.65085 -0.7318 l0 -12.895 l-13.383 -18.631 c-0.12203 -0.12203 0 -0.28475 0.12203 -0.28475 l1.7894 0 c0.12203 0 0.24407 0.12203 0.32542 0.28475 l12.163 16.678 l12.122 -16.678 c0.12203 -0.16271 0.20299 -0.28475 0.3657 -0.28475 l1.7898 0 z M127.72810169491525 25.057999999999993 c0.28514 0 0.3665 0.080957 0.3665 0.44705 l0 1.0983 c0 0.28475 -0.081356 0.40678 -0.3665 0.40678 l-11.146 0 l0 30.142 c0 0.32542 -0.081356 0.44746 -0.3665 0.44746 l-0.97587 0 c-0.48814 0 -0.69153 -0.24367 -0.69153 -0.7318 l0 -29.858 l-11.105 0 c-0.28475 0 -0.44746 -0.081356 -0.44746 -0.40678 l0 -1.0983 c0 -0.32542 0.12203 -0.44746 0.44746 -0.44746 l24.285 0 z M160.31142372881357 52.39359999999999 c0.20339 0.20339 0.081755 0.48895 -0.28435 0.85505 c-3.0102 2.8881 -6.7119 4.6369 -11.593 4.6369 c-9.1932 0 -16.678 -7.2809 -16.678 -16.515 s7.4847 -16.597 16.678 -16.597 c4.5559 0 8.6644 1.7085 11.675 4.5966 c0.3661 0.3661 0.44746 0.61017 0.24407 0.77288 l-0.97627 0.81356 c-0.20299 0.20339 -0.3657 0.24367 -0.65044 -0.041077 c-1.75 -1.7492 -5.3703 -4.1492 -9.9262 -4.1492 c-10.047 0 -15.01 8.0542 -15.01 14.603 c0 6.6301 4.9627 14.522 15.01 14.522 c4.5559 0 7.9322 -2.3186 9.8034 -4.1085 c0.28475 -0.28475 0.48814 -0.44746 0.69153 -0.24407 z M191.63376271186442 25.057999999999993 c0.32542 0 0.44786 0.12203 0.44786 0.40678 l0 31.769 c0 0.24407 -0.081356 0.3661 -0.3661 0.3661 l-0.97627 0 c-0.44746 0 -0.65085 -0.24367 -0.65085 -0.65044 l0 -14.4 l-22.698 0 l0 14.603 c0 0.28514 -0.081356 0.44746 -0.3661 0.44746 l-1.1797 0 c-0.32542 0 -0.44746 -0.12203 -0.44746 -0.44746 l0 -31.688 c0 -0.28475 0.081356 -0.40678 0.44746 -0.40678 l1.139 0 c0.28475 0 0.40678 0.12203 0.40678 0.40678 l0 15.092 l22.698 0 l0 -15.092 c0 -0.28475 0.081356 -0.40678 0.40678 -0.40678 l1.1386 0 z"></path>
+                            </g>
+                        </svg>
+                    </span>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <form id="whitelist-form" class="">
+                        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                        <div class="form-group">
+                            <label class="" for="email">Email</label>
+                            <input class="form-control" name="email" placeholder="tim.holder@gmail.com" autocomplete="off">
+                        </div>
+                        <div class="form-group text-left">
+                            <label for="purchaseAmount">
+                                <small>Please indicate the amount with which you want to
+                                    participate in the token sale (in USD)&nbsp;<span class="text-danger">*</span>
+                                </small>
+                            </label>
+                            <select class="form-control" name="purchaseAmount">
+                                <option value="null" selected>Select an amount</option>
+                                {{#each contributionAmounts}}
+                                    <option value="{{this.value}}">{{this.display}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <hr/>
+                        <div style="margin-top: 20px;">
+                            <label>
+                                <small>Please choose a crypto-assets ETH (Ethereum) or BTC (BitCoin) which you plan to
+                                    swap for Swytch.
+                                </small>
+                            </label>
+                            <div class="form-group">
+                                <div class="radio-inline">
+                                    <label><input type="radio" name="cryptoType" id="optionsRadios2"
+                                                  value="ETH">ETH</label>
+                                </div>
+                                <div class="radio-inline">
+                                    <label><input type="radio" name="cryptoType" id="optionsRadios2"
+                                                  value="BTC">BTC</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <div class="g-recaptcha pull-left" required data-sitekey="{{site_key}}"
+                                 data-callback="recaptchaCallback">
+                            </div>
+                            <button id="submit" class="btn btn-primary hide" style="margin-left: 20px;" disabled>Submit
+                            </button>
+                        </div>
+                    </form>
+                    <div id="alert-row" class="col-md-12 hide">
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row info-row" style="margin-top:25px;">
                 <div class="col-md-10 col-md-offset-1">
-                    <hr>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="timeline-section" class="section-hero">
+    <div class="section-overlay">
+        <div class="container">
+            <div>
+                <div class="page-header text-center">
+                    <h2>Swytch TGE Information</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
                     <p>Swytch seeks to verify the generation of sustainable energy and incentivize the development of
                         open and decentralized global energy infrastructures. This revolutionary program will address
                         many of the systemic issues that plague the renewable energy markets today.
@@ -27,138 +151,18 @@
                     </p>
                 </div>
             </div>
-            <div class="row" style="margin-top:25px;">
-                <div class="col-md-12 text-center">
-                    {{> timeline}}
-                </div>
-            </div>
-            <div class="row info-row" style="margin-top:25px;">
-                <div class="col-md-10 col-md-offset-1">
-                    <p>Our mission is clear, the need is obvious, and the solution is sound. We look forward to working
-                        with you to accelerate the Swytch to a sustainable and equitable energy future.</p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-</section>
-<section id="whitelist-section" class="content content--bg content--solar-desert content--nopadding">
-    <div class="content content--bg content-bg-overlay overlay-bg-solar">
-        <div class="row" style="padding-top:50px;">
-            <div class="col-md-6 col-md-offset-3">
-                <h4 class="title br br-o">Pre-Sale Whitelist</h4>
-                <hr>
-                <form id="contact-form" class="">
-                    <div class="form-group">
-                        <label class="" for="firstName">First Name</label>
-                        <input class="form-control" name="firstName" placeholder="tim">
-                    </div>
-                    <div class="form-group">
-                        <label class="" for="lastName">Last Name</label>
-                        <input class="form-control" name="lastName" placeholder="holder">
-                    </div>
-                    <div class="form-group">
-                        <label class="" for="email">Email</label>
-                        <input class="form-control" name="email" placeholder="tim.holder@gmail.com">
-                    </div>
-                    <div class="form-group">
-                        <label class="" for="confirm-email">Confirm Email</label>
-                        <input class="form-control" name="confirm-email" placeholder="tim.bob@gmail.com">
-                    </div>
-                    <label>You must enter your Slack username and/or Telegram username to be eligible for
-                        whitelisting.</label>
-                    <hr/>
-                    <div class="form-group">
-                        <label class="" for="slack-handle">What's your Slack handle?</label>
-                        <input class="form-control" name="slack-handle">
-                    </div>
-                    <div class="form-group">
-                        <label class="" for="telegram-handle">What's your Telegran handle?</label>
-                        <input class="form-control" name="telegram-handle">
-                    </div>
-                    <label>Please indicate the amount with which you want to participate in the token sale (in USD)
-                        <span class="text-danger">*</span></label>
-                    <hr/>
-                    <div class="text-left">
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="0-100">USD > 100
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="100-1000">USD
-                                100 -
-                                1,000
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="1000-5000">USD
-                                1,000 -
-                                5,000
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="5000-10000">USD
-                                5,000 -
-                                10,000
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="10000-50000">USD
-                                10,000
-                                - 50,000
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="50000-100000">USD
-                                50,000
-                                - 100,000
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="100000-MAX">USD
-                                +100,000
-                            </label>
-                        </div>
-                    </div>
-                </form>
-                <hr/>
-                <div class="row">
-                    <div class="col-md-12 text-center" style="margin: 10px auto;">
-                        <label class="">Country: <span class="badge bg-success" data-country></span></label>
-                        <label>ip: <span class="badge bg-success" data-ip></span></label>
-                    </div>
-                </div>
-                <div class="text-center">
-
-                    <button id="submit" class="btn btn-primary">Submit</button>
-                </div>
+            <div class="row">
+                {{> timeline}}
             </div>
         </div>
     </div>
 </section>
 
 {{#section 'scripts'}}
-    <script src="/javascripts/particles.js"></script>
-    <script src="/javascripts/app.bundle.js"></script>
+    <script src="/javascripts/app.bundle.min.js"></script>
     <script>
         $(document).ready(function () {
-            particlesJS.load('particles-js', 'particles.json', function () {
-
-            })
-            $('#contact-form').submit(function () {
-                return true
-            })
-            $('#submit').click(function () {
-                App.submit()
-            })
+            $('#whitelist-form').submit(App.submit)
             App.geoLocate(function (err, ip) {
                 $.ajax({
                     method: 'GET',
@@ -166,13 +170,13 @@
                 }).done(function (data) {
                     $('[data-country]').text(data.country)
                     $('[data-ip]').text(ip)
-                    console.log(data)
-//                    return cb(r)
                 }).fail(function (e) {
                     console.error(e)
                 })
             })
         })
+
+        var recaptchaCallback = App.recaptchaCallback
     </script>
 {{/section}}
 
