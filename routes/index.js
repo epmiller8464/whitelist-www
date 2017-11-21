@@ -17,7 +17,7 @@ router.get('/', csurf, function (req, res, next) {
   })
 })
 router.get('/geo-locate', (req, res, next) => {
-  var geo = geoip.lookup(req.query.ip)
+  let geo = geoip.lookup(req.query.ip)
   return res.status(200).json(geo)
 })
 
@@ -38,13 +38,13 @@ router.post('/whitelist', csurf, (req, res, next) => {
     if (err || !result.success) {
       return res.status(400).json({error: 'Validation failed.'})
     }
-    var data = {
+    // var data =
+    const record = new Whitelist({
       email: req.body.email,
       ip: req.ip,
       cryptoType: req.body.cryptoType,
       purchaseAmount: req.body.purchaseAmount
-    }
-    const record = new Whitelist(data)
+    })
     record.save((err, doc) => {
       if (err) {
         return res.status(400).json({error: 'Invalid parameters'})
@@ -64,13 +64,18 @@ router.post('/whitelist', csurf, (req, res, next) => {
         secure: process.env.NODE_ENV !== 'development',
         path: '/'
       })
-      mail({to: doc.email, name: doc.email.split('@')[0]}).then((result) => {
+      mail({to: doc.email, name: doc.email.split('@')[0]})
+      .then((result) => {
         return res.status(200).json({success: true})
       }).catch((e) => {
         return res.status(200).json({success: true})
       })
     })
   })
+})
+
+router.get('/whitelist/confirm', (req, res, next) => {
+
 })
 
 function validateSubmitter (recaptcha, ip, cb) {

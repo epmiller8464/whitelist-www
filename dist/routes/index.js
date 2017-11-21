@@ -43,13 +43,13 @@ router.post('/whitelist', csurf, function (req, res, next) {
     if (err || !result.success) {
       return res.status(400).json({ error: 'Validation failed.' });
     }
-    var data = {
+    // var data =
+    var record = new Whitelist({
       email: req.body.email,
       ip: req.ip,
       cryptoType: req.body.cryptoType,
       purchaseAmount: req.body.purchaseAmount
-    };
-    var record = new Whitelist(data);
+    });
     record.save(function (err, doc) {
       if (err) {
         return res.status(400).json({ error: 'Invalid parameters' });
@@ -77,6 +77,8 @@ router.post('/whitelist', csurf, function (req, res, next) {
     });
   });
 });
+
+router.get('/whitelist/confirm', function (req, res, next) {});
 
 function validateSubmitter(recaptcha, ip, cb) {
   var url = 'https://www.google.com/recaptcha/api/siteverify?secret= ' + process.env.RECAPTCHA_SECRET + '&response=' + recaptcha + '&remoteip=' + ip;

@@ -10,10 +10,11 @@ module.exports = function (data) {
           email: data.to,
           name: data.name
         }],
+        substitutionWrappers: ['{{', '}}'],
         substitutions: {
-          '%email%': data.to,
-          '%discount%': '10%',
-          '%confirm_url%': 'https://register.swytch.io/comfirm?email=' + data.to
+          email: data.to,
+          discount: '10%',
+          confirm_url: 'https://register.swytch.io/comfirm?email=' + data.to
         }
       }],
       from: { email: process.env.SWYTCH_EMAIL, name: 'Swytch Team' },
