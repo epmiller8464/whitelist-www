@@ -13,7 +13,7 @@ module.exports = function (cb) {
     promiseLibrary: global.Promise
   };
 
-  mongoose.connect(decrypt(config.db.MONGO_DB_URI), dbOptions).then(function (db) {
+  mongoose.connect(decrypt(process.env.MONGODB_URI), dbOptions).then(function (db) {
     db.on('open', console.info.bind(console, 'connection open'));
     db.on('error', console.error.bind(console, 'connection error'));
     db.once('open', function (callback) {
