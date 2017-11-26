@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../lib/register.js"],"names":["register","data"],"mappings":"AAAA;;AAEA,IAAMA,WAAW,SAAXA,QAAW,CAACC,IAAD,EAAU,CAI1B,CAJD","file":"register.js","sourcesContent":["'use strict'\n\nconst register = (data) => {\n\n\n\n}"]}

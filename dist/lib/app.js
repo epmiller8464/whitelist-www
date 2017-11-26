@@ -2,6 +2,10 @@
 
 var publicIp = require('public-ip');
 var Alert = require('./vanishingAlert');
+
+var _require = require('luxon'),
+    DateTime = _require.DateTime;
+
 var vm = { token: null };
 
 function resetRecaptcha() {
@@ -91,6 +95,8 @@ var App = {
         } else {
           $('body').addClass('loading');
           // $('#submit').prop('disabled', true)
+          var dt = DateTime.local();
+
           $.ajax({
             method: 'POST',
             url: '/whitelist',
@@ -99,7 +105,7 @@ var App = {
             var data = {
               css: 'alert-success',
               targetId: 'alert',
-              message: 'Congrats you have been added to the Swytch Pre-Sale Whitelist.'
+              message: 'Congrats you have been added to the Swytch Whitelist.'
             };
             if (result.error) {
               data.message = 'alert-danger';

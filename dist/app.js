@@ -4,90 +4,44 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
+var cors = require('cors');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sassMiddleware = require('node-sass-middleware');
-var hbs = require('express-handlebars');
 var requestHeaders = require('./lib/requestHeaders');
 // const uuid = require('uuid')
-// const session = require('express-session')
+var session = require('express-session');
 var sslRedirect = require('./lib/ssl-redirect');
+var passport = require('passport');
+var jwt = require('jsonwebtoken');
 var moment = require('moment');
 var compression = require('compression');
-var index = require('./routes/index');
 var app = express();
 app.use(compression());
 app.use(sslRedirect(['test', 'production']));
 requestHeaders(app);
 app.disable('x-powered-by');
 // view engine setup
-var exphbs = hbs.create({
-  extname: 'hbs', defaultLayout: 'layout', helpers: {
-    section: function section(name, options) {
-      if (!this._sections) {
-        this._sections = {};
-      }
-      this._sections[name] = options.fn(this);
-      return null;
-    },
-    increment: function increment(index) {
-      return index + 1;
-    },
-    formatDate: function formatDate(date) {
-      return moment(date).format('L');
-    },
-    formatDateTime: function formatDateTime(date) {
-      return moment(date).format('LLL');
-    },
-    printCode: function printCode(code) {
-      return JSON.stringify(code, null, 2);
-    },
-    ifCond: function ifCond(v1, operator, v2, options) {
-
-      switch (operator) {
-        case '==':
-          return v1 == v2 ? options.fn(this) : options.inverse(this);
-        case '===':
-          return v1 === v2 ? options.fn(this) : options.inverse(this);
-        case '<':
-          return v1 < v2 ? options.fn(this) : options.inverse(this);
-        case '<=':
-          return v1 <= v2 ? options.fn(this) : options.inverse(this);
-        case '>':
-          return v1 > v2 ? options.fn(this) : options.inverse(this);
-        case '>=':
-          return v1 >= v2 ? options.fn(this) : options.inverse(this);
-        case '&&':
-          return v1 && v2 ? options.fn(this) : options.inverse(this);
-        case '||':
-          return v1 || v2 ? options.fn(this) : options.inverse(this);
-        default:
-          return options.inverse(this);
-      }
-    },
-    printYesOrNo: function printYesOrNo(isTrue) {
-      return isTrue ? 'Yes' : 'No';
-    }
-  }
-});
+var exphbs = require('./handlebars')();
 // view engine setup
 app.engine('hbs', exphbs.engine);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-app.set('trust proxy', 1);
-
-app.use(require('cors')({
-  origin: '*',
-  methods: 'GET,POST',
-  preflightContinue: true
-  // headers: ['Access-Control-Allow-Origin']
-}));
-
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(logger('dev'));
+// app.use(cors())
+app.set('secret', process.env.APP_SECRET);
+require('./lib/passport')(passport);
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(session({
+  secret: process.env.APP_SECRET,
+  resave: false,
+  saveUninitialized: true
+}));
 app.use(cookieParser(process.env.APP_SECRET));
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),
@@ -98,26 +52,9 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 
-app.use('/', index);
+require('./routes')(app);
 require('./lib/db')(function () {});
-
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
-// error handler
-app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+require('./lib/events')();
 
 module.exports = app;
 //# sourceMappingURL=app.js.map

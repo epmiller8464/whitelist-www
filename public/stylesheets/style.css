@@ -1,3 +1,10 @@
+@import url(font-awesome.min.css);
+.bg-dark {
+  background-color: #16222A !important; }
+
+.bg-light {
+  background-color: #c8c8c8 !important; }
+
 .text-primary {
   color: #1d2d38 !important; }
 
@@ -16,19 +23,22 @@
   color: ghostwhite; }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif !important;
   font-size: 14px;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
   text-rendering: geometricPrecision;
   color: ghostwhite;
-  background-color: #1d2d38; }
+  background-color: #16222A; }
 
 a {
   color: #1d2d38; }
 
 footer {
-  background-color: #C7FF00;
+  background-color: #16222A;
   margin: 0;
-  padding: 20px 0; }
+  padding: 20px 0;
+  border-top: 2px #7a7983 solid; }
 
 select {
   background-color: transparent !important; }
@@ -41,22 +51,9 @@ select,
 .form-control::placeholder {
   color: rgba(248, 248, 255, 0.8) !important; }
 
-.logo,
-.logo svg {
-  color: #1d2d38;
-  fill: #1d2d38;
-  margin: 20px 10px 20px 10px !important; }
-
-.logo-small svg {
-  height: 25px;
-  width: 80px; }
-
-.badge.bg-success {
-  background-color: #1fdb6a; }
-
 .js .loading::before,
 .js .loading::after {
-  content: '';
+  content: "";
   position: fixed;
   z-index: 2000; }
 
@@ -84,146 +81,13 @@ select,
     transform: rotate(0deg); }
   100% {
     transform: rotate(360deg); } }
-
-.content {
-  position: relative;
-  min-height: 100vh;
-  padding: 10vh 0 0;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; }
-
-.content--highlight {
-  padding: 0;
-  background: rgba(0, 0, 0, 0.8); }
-
-.content--nopadding {
-  padding: 0; }
-
-.content--boxes {
-  min-height: 70vh; }
-
-.content__inner {
-  position: relative;
-  z-index: 10;
-  max-width: 992px;
-  margin: 0 auto; }
-
-.info-row p {
-  font-size: 1em !important;
-  text-align: justify; }
-
-.content__inner--fheight {
-  height: 60vh; }
-
-.content__inner--half {
-  flex: none;
-  width: 50%;
-  max-width: none;
-  height: auto;
-  padding: 15vh calc(25vw - 220px); }
-
-.content__inner--half .content__title {
-  font-size: 2.25em;
-  margin-bottom: 0.5em;
-  text-transform: uppercase; }
-
-.content__inner--half .content__subtitle {
-  font-size: 1.75em; }
-
-.content__inner--half .link-more {
-  color: rgba(0, 0, 0, 0.3); }
-
-.content__inner--c1 {
-  background: #4d61c5; }
-
-.content__inner--c2 {
-  background: #f7f4ec; }
-
-.content__inner--c3 {
-  background: #cc8969; }
-
-.content__title {
-  line-height: 1.25;
-  position: relative;
-  z-index: 10;
-  margin: 0;
-  padding: 0 5vmax 0 5vmax;
-  color: #484751; }
-
-.content__title--color {
-  color: #ef5350; }
-
-.content__title--light {
-  color: #f7f4ec; }
-
-.content__title--center {
-  text-align: center; }
-
-.content__title .icon {
-  font-size: 0.45em;
-  display: inline-block;
-  margin: 0 0.25em;
-  color: #5b5d69; }
-
-.content__subtitle {
-  font-size: 2.5em;
-  font-weight: normal;
-  margin: 0.5em 0 1em; }
-
-.content__subtitle--light {
-  color: #f7f4ec; }
-
-.content--bg {
-  background-position: 50% 50%;
-  background-size: cover; }
-
-.content-bg-overlay {
-  position: relative;
-  z-index: 10;
-  margin: 0 auto;
-  background-position: 50% 50%;
-  background-size: cover; }
-
-.content.content--bg.content-bg-overlay {
-  padding: 0 !important; }
-
-.overlay-dark {
-  background-color: rgba(0, 0, 0, 0.6); }
-
-.overlay-bg-solar {
-  background-color: rgba(0, 0, 0, 0.8); }
-
-.overlay-bg-light {
-  background-color: rgba(255, 255, 255, 0.8); }
-
-.content--nasa {
-  background-image: url(../images/unsplash/nasa-53884.jpg); }
-
-.content--solar-desert {
-  background-image: url(../images/unsplash/solar-desert.jpg); }
-
-#particles-js {
-  position: absolute;
-  z-index: -1;
-  height: 100%;
-  width: 100%; }
-
-.navbar-light {
-  background-color: transparent; }
-
-path.fingerprint {
-  fill: #1fdb6a; }
-
 .section-hero {
   position: relative;
   width: 100vw;
   height: 100%;
-  margin: 0 auto;
   background-size: cover;
-  background-position: 50% 50%; }
+  background-position: 50% 50%;
+  z-index: 0; }
 
 .section-hero > .section-overlay > div.container {
   padding: 120px 0; }
@@ -231,21 +95,34 @@ path.fingerprint {
 .hero-solar {
   background-image: url("../images/unsplash/solar-desert.jpg"); }
 
+.hero-code {
+  background-image: url("../images/unsplash/code.jpg"); }
+
+.hero-nasa {
+  background-image: url("../images/unsplash/nasa.jpg"); }
+
+.hero-servers {
+  background-image: url("../images/unsplash/servers.jpg"); }
+
 .section-overlay {
   width: 100vw;
   height: 100%;
-  background-image: -webkit-linear-gradient(270deg, #169d4c, rgba(25, 103, 66, 0.95) 0%, rgba(29, 45, 56, 0.9) 34%, rgba(22, 34, 42, 0.92));
-  background-image: linear-gradient(180deg, #169d4c, rgba(25, 103, 66, 0.95) 0%, rgba(29, 45, 56, 0.9) 34%, rgba(22, 34, 42, 0.92));
   opacity: 1;
   color: #fff; }
 
-.section-gradient-overlay {
-  width: 100vw;
-  height: 100%;
-  background-image: -webkit-linear-gradient(270deg, #169d4c, rgba(25, 103, 66, 0.95) 0%, rgba(29, 45, 56, 0.9) 34%, rgba(22, 34, 42, 0.92));
-  background-image: linear-gradient(180deg, #169d4c, rgba(25, 103, 66, 0.95) 0%, rgba(29, 45, 56, 0.9) 34%, rgba(22, 34, 42, 0.92));
-  opacity: 1;
-  color: #fff; }
+.gradient-overlay-360 {
+  background-image: -webkit-linear-gradient(360deg, #16222a 0%, rgba(22, 34, 42, 0.9) 50%, rgba(10, 75, 66, 0.95) 90%, #0a4b42);
+  background-image: linear-gradient(360deg, #16222a 0%, rgba(22, 34, 42, 0.9) 50%, rgba(10, 75, 66, 0.95) 90%, #0a4b42); }
+
+.gradient-overlay {
+  background-image: -webkit-linear-gradient(180deg, #16222a 0%, rgba(22, 34, 42, 0.9) 50%, rgba(10, 75, 66, 0.95) 90%, #0a4b42);
+  background-image: linear-gradient(180deg, #16222a 0%, rgba(22, 34, 42, 0.9) 50%, rgba(10, 75, 66, 0.95) 90%, #0a4b42); }
+
+.dark-overlay {
+  background: rgba(0, 0, 0, 0.5) url("../images/pattern.png") repeat; }
+
+.light-overlay {
+  background: rgba(255, 255, 255, 0.9) url("../images/pattern.png") repeat; }
 
 .timeline-container {
   width: 50%;
@@ -255,7 +132,7 @@ path.fingerprint {
   margin: 0 auto !important; }
 
 #timeline-section .page-header,
-#main .page-header {
+#main > .jumbotron > .container {
   margin: 10px auto 20px auto !important;
   width: 50%;
   padding-bottom: 20px !important;
@@ -267,5 +144,11 @@ path.fingerprint {
 
 .info-left {
   padding-top: 10vh; }
+
+.bg-clear {
+  background-color: transparent !important; }
+
+.bg-light {
+  color: #1d2d38 !important; }
 
 /*# sourceMappingURL=style.css.map */
