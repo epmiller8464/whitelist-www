@@ -7,7 +7,7 @@
 <section id="main" class="section-hero hero-solar">
     <div class="section-overlay gradient-overlay">
         <div class="jumbotron bg-clear">
-            <div class="container p-5">
+            <div class="container p-3">
                 <div class="w-75 m-auto p-1">
                     <h1 class="text-center">
                         SWYTCH IS A RENEWABLE<br/>
@@ -16,31 +16,20 @@
                     <h4 class="text-center text-muted">
                         Blockchain technology unlocking a sustainable and equitable energy future
                     </h4>
-                    <div class="w-100 text-center mt-5 mb-5">
+                    <div class="w-100 text-center mt-3 mb-3">
                         <button class="btn btn-link fa-4x" data-toggle="modal" data-target="#swytch-video-modal">
                             <span class="fa fa-play-circle"></span>
                         </button>
                         <br/>
                         <b class="fa-2x text-bold">Learn About Swytch</b>
                     </div>
-                    <div id="subscribe-section" class="mt-5 mb-5 text-center">
-
-                        <!--<form id="subscribe-form" class="" method="post" action="/subscribe">-->
-                        <!--<div class="input-group input-group-lg">-->
-                        <!--<input type="text" class="form-control" placeholder="Enter your e-mail"-->
-                        <!--aria-label="Enter your e-mail" v-model="email">-->
-                        <!--<span class="input-group-btn">-->
-                        <!--<button class="btn btn-primary" type="button"-->
-                        <!--@click="onSubscribe">Subscribe</button>-->
-                        <!--</span>-->
-                        <!--</div>-->
-                        <!--</form>-->
+                    <div id="subscribe-section" class="my-5 text-center">
                         <subscribe-form></subscribe-form>
                         <b class="text-muted">Don't worry we will never share or sell your information.</b>
                     </div>
-                    <div class="w-100  text-center pt-5">
+                    <div class="text-center my-5 py-lg-5">
                         <a href="#timeline-section" class="btn btn-link text-muted mt-5">
-                            <span class="fa fa-chevron-circle-down fa-3x"></span>
+                            <span class="fa fa-chevron-down fa-2x"></span>
                         </a>
                     </div>
                 </div>
@@ -139,7 +128,8 @@
 </section>
 <section class="container-fluid bg-white p-lg-5 text-dark">
     <div class="container p-lg-5">
-        <h1 class="h1">How it works</h1><br/>
+        <h1 class="h1">How it works</h1>
+        <hr class="bg-dark"/>
         <div class="row">
             <div class="col-6">
                 <p class="lead">The Swytch platform provides its users the means to generate Swytch currency through
@@ -179,7 +169,8 @@
                 <h2 class="">LET’S TAKE OUR ENERGY FUTURE INTO OUR OWN HANDS AND ACCELERATE THE SWYTCH TO
                     RENEWABLES.</h2>
             </div>
-            <button class="btn btn-dark mt-4"> Download Whitepaper</button>
+            <a onclick="window.open('{{WP_URL}}')"
+               class="btn btn-dark mt-4"> Download Whitepaper</a>
         </div>
     </div>
 </section>

@@ -9,6 +9,8 @@ router.get('/', function (req, res, next) {
   res.render('index', {
     title: 'Swytch',
     site_key: process.env.RECAPTCHA_KEY,
+    VIDEO_URL: process.env.SWYTCH_VIDEO_URL,
+    WP_URL: process.env.WHITEPAPER_URL,
     csrfToken: req.csrfToken()
   });
 });
