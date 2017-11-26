@@ -1,6 +1,9 @@
 {{#section  'head'}}
     <!--<script src="https://www.google.com/recaptcha/api.js" async defer></script>-->
+
 {{/section}}
+
+
 <section id="main" class="section-hero hero-solar">
     <div class="section-overlay gradient-overlay">
         <div class="jumbotron bg-clear">
@@ -14,23 +17,26 @@
                         Blockchain technology unlocking a sustainable and equitable energy future
                     </h4>
                     <div class="w-100 text-center mt-5 mb-5">
-                        <button class="btn btn-link fa-4x">
+                        <button class="btn btn-link fa-4x" data-toggle="modal" data-target="#swytch-video-modal">
                             <span class="fa fa-play-circle"></span>
                         </button>
                         <br/>
                         <b class="fa-2x text-bold">Learn About Swytch</b>
                     </div>
-                    <div class="mt-5 mb-5 text-center">
-                        <form class="" method="post" action="/subscribe">
-                            <div class="input-group input-group-lg">
-                                <input type="text" class="form-control" placeholder="Enter your e-mail"
-                                       aria-label="Enter your e-mail">
-                                <span class="input-group-btn"><button class="btn btn-primary"
-                                                                      type="button">Subscribe</button></span>
-                            </div>
-                        </form>
-                        <b class="text-muted">Don't worry we will never share or sell your information.</b>
+                    <div id="subscribe-section" class="mt-5 mb-5 text-center">
 
+                        <!--<form id="subscribe-form" class="" method="post" action="/subscribe">-->
+                        <!--<div class="input-group input-group-lg">-->
+                        <!--<input type="text" class="form-control" placeholder="Enter your e-mail"-->
+                        <!--aria-label="Enter your e-mail" v-model="email">-->
+                        <!--<span class="input-group-btn">-->
+                        <!--<button class="btn btn-primary" type="button"-->
+                        <!--@click="onSubscribe">Subscribe</button>-->
+                        <!--</span>-->
+                        <!--</div>-->
+                        <!--</form>-->
+                        <subscribe-form></subscribe-form>
+                        <b class="text-muted">Don't worry we will never share or sell your information.</b>
                     </div>
                     <div class="w-100  text-center pt-5">
                         <a href="#timeline-section" class="btn btn-link text-muted mt-5">
@@ -182,7 +188,7 @@
         <div class="container m-auto">
             <h1 class="display-4">Meet Our Team</h1>
             <hr class="bg-light"/>
-            <div class="card-deck mb-5 mt-5">
+            <div class="card-deck">
                 <div class="card bg-clear">
                     <img class="card-img-top rounded-circle" src="/images/team/john.jpg" alt="evan">
                     <div class="card-body">
@@ -216,8 +222,8 @@
                     </div>
                 </div>
             </div>
-            <div class="card-deck mb-5 mt-5">
-                <div class="card bg-clear invisible">
+            <div class="row">
+                <div class="card w-25 bg-clear ml-2 mr-2" style="width: 25% !important;">
                     <img class="card-img-top rounded-circle" src="/images/team/Pearsons.jpg" alt="Card image cap">
                     <div class="card-body">
                         <h4 class="card-title">ANDREW PEARSONS</h4>
@@ -225,15 +231,7 @@
                         <a href="#" class="btn btn-link fa-2x m-auto"><span class="fa fa-linkedin-square"></span></a>
                     </div>
                 </div>
-                <div class="card bg-clear">
-                    <img class="card-img-top rounded-circle" src="/images/team/Pearsons.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">ANDREW PEARSONS</h4>
-                        <p class="card-text">Director of Operations, Strategy and operations expert</p>
-                        <a href="#" class="btn btn-link fa-2x m-auto"><span class="fa fa-linkedin-square"></span></a>
-                    </div>
-                </div>
-                <div class="card bg-clear">
+                <div class="card w-25 bg-clear ml-2 mr-2" style="width: 25% !important;">
                     <img class="card-img-top rounded-circle" src="/images/team/fff.png" alt="Card image cap">
                     <div class="card-body">
                         <h4 class="card-title">ERIC MILLER</h4>
@@ -241,17 +239,7 @@
                         <a href="#" class="btn btn-link fa-2x m-auto"><span class="fa fa-linkedin-square"></span></a>
                     </div>
                 </div>
-                <div class="card bg-clear invisible">
-                    <img class="card-img-top rounded-circle" src="/images/team/Pearsons.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">ANDREW PEARSONS</h4>
-                        <p class="card-text">Director of Operations, Strategy and operations expert</p>
-                        <a href="#" class="btn btn-link fa-2x m-auto"><span class="fa fa-linkedin-square"></span></a>
-                    </div>
-                </div>
             </div>
-
-
         </div>
     </div>
 </section>
@@ -325,21 +313,31 @@
 </section>
 
 {{#section 'scripts'}}
+
     <script src="/javascripts/app.bundle.min.js"></script>
+
     <script>
-        var app4 = new Vue({
-            el: '#app-4',
-            delimiters: ['@{', '}'],
-            data: {
-                todos: [
-                    {text: 'Learn JavaScript'},
-                    {text: 'Learn Vue'},
-                    {text: 'Build something awesome'}
-                ]
+        Vue.component('subscribe-form', {
+            template: '<form id="subscribe-form" class="" method="post" action="/subscribe"><div class="input-group input-group-lg"><input type="text" class="form-control" placeholder="Enter your e-mail" aria-label="Enter your e-mail" v-model="email"><span class="input-group-btn"><button class="btn btn-primary" type="button" @click="onSubscribe">Subscribe</button></span></div></form>',
+            data: function () {
+                return {
+                    email: 'eric'
+                }
+            },
+            methods: {
+                onSubscribe: function (event) {
+                    console.log(event)
+                    console.log(this.$data.email)
+                }
             }
         })
+        var app2 = new Vue({
+            el: '#subscribe-section',
+        })
+        $('#swytch-video-modal').on('hide.bs.modal', function (e) {
+            videojs('swytch-video').pause()
+        })
         $(document).ready(function () {
-
             $('#whitelist-form').submit(App.submit)
 //            App.geoLocate(function (err, ip) {
 //                $.ajax({

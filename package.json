@@ -50,8 +50,10 @@
     "scrypt": "^6.0.3",
     "sendgrid": "^5.2.3",
     "serve-favicon": "~2.4.5",
+    "smooth-scroll": "^12.1.5",
     "underscore": "^1.8.3",
     "uuid": "^3.1.0",
+    "video.js": "^6.4.0",
     "vue": "^2.5.8"
   },
   "devDependencies": {

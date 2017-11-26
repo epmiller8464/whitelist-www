@@ -12,7 +12,10 @@ router.get('/', function (req, res, next) {
     csrfToken: req.csrfToken()
   });
 });
+router.post('/subscribe', function (req, res, next) {
 
+  res.status(200).json({ success: true });
+});
 router.post('/login', authenticate, function (req, res, next) {
   res.render('login', {
     title: 'Swytch',
