@@ -2,7 +2,7 @@
 
 var Whitelist = require('./whitelist')();
 var Log = require('./log')();
-var User = require('./whitelist')();
+var User = require('./user')();
 var Token = require('./token')();
 var Subscriber = require('./subscriber')();
 

@@ -13,41 +13,42 @@ var _require2 = require('express-validator/filter'),
     sanitize = _require2.sanitize,
     sanitizeQuery = _require2.sanitizeQuery;
 
-var _require3 = require('../lib/model'),
-    Subscriber = _require3.Subscriber;
+var _require3 = require('../../lib/model'),
+    User = _require3.User;
 
-var _require4 = require('../lib/mail'),
+var _require4 = require('../../lib/mail'),
     Email = _require4.Email;
-/* GET home page. */
-// router.get('/', function (req, res, next) {
-//   res.render('index', {
-//     title: 'Swytch',
-//     site_key: process.env.RECAPTCHA_KEY,
-//     VIDEO_URL: process.env.SWYTCH_VIDEO_URL,
-//     WP_URL: process.env.WHITEPAPER_URL,
-//     csrfToken: req.csrfToken()
-//   })
-// })
+
+var _require5 = require('../../lib/jsonwebtoken'),
+    confirmEmailToken = _require5.confirmEmailToken,
+    verifyToken = _require5.verifyToken;
 
 var validate = [check('email').isEmail().withMessage('must be an email').trim().normalizeEmail(), sanitize('email').trim().normalizeEmail()];
 
-router.post('/newsletter/join', validate, function (req, res, next) {
+router.post('/', validate, function (req, res, next) {
   var errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(422).json({ errors: errors.mapped() });
   }
-  Subscriber.create({ email: req.body.email, subscribeTo: ['news-letter'] }, function (err, doc) {
+
+  var user = new User(req.body);
+
+  user.save(function (err, doc) {
     if (err) {
       return res.status(200).json({ success: false, message: 'Your e-mail is already subscribed.' });
     }
-    Email.sendNewsletterWelcomeEmail({ to: req.body.email }).then(function (result) {
-      res.status(200).json({ success: true });
+    confirmEmailToken(doc.id).then(function (token) {
+
+      Email.sendConfirmation({ to: req.body.email, name: doc.first_name + ' ' + doc.last_name, token: token }).then(function (result) {
+        return res.status(200).json({ success: true, data: doc.toObject() });
+      }).catch(function (err) {
+        throw err;
+      });
     }).catch(function (err) {
-      // req.log(err)
-      res.status(200).json({ success: false });
+      return res.status(400).json({ error: true, message: err.message });
     });
   });
 });
 
 module.exports = router;
-//# sourceMappingURL=marketing.js.map
+//# sourceMappingURL=user.js.map

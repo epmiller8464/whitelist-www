@@ -1,11 +1,45 @@
 'use strict';
 
 var cors = require('cors');
+var express = require('express');
+
 var csurf = require('csurf');
 var authenticate = require('./lib/authenticate');
 var passport = require('passport');
 module.exports = function (app) {
+  var apiApp = express();
+  // apiApp.use(sslRedirect());
+  apiApp.disable('x-powered-by');
 
+  // var Api = require('./routes/api')
+  // apiApp.use(PATH, require('cors')({
+  //   origin: '*',
+  //   methods: 'GET,PUT,POST,DELETE',
+  //   headers: ['Content-Type', 'Authorization']
+  // }))
+
+  apiApp.set('trust proxy', 1);
+  var user = require('./routes/api/user');
+  apiApp.use('/api/v1/users', user);
+
+  apiApp.use('/api/v1', function (req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    // req.log.error(err)
+    next(err);
+  });
+
+  if (apiApp.get('env') === 'development') {
+    apiApp.use('/api/v1', function (err, req, res, next) {
+      res.status(err.status || 500).json({ error: true, message: err.message });
+    });
+  } else {
+    apiApp.use('/api/v1', function (err, req, res, next) {
+      res.status(err.status || 500).json({ error: true, message: err.message });
+    });
+  }
+
+  app.use(apiApp);
   app.disable('x-powered-by');
   app.use(cors());
   app.set('trust proxy', 1);

@@ -8,7 +8,7 @@ module.exports = function (req, res, next) {
       return next(err);
     }
     if (!user) {
-      return res.redirect('/login');
+      return res.status(400).json({ error: 'Unauthorized' });
     }
     req.logIn(user, function (err) {
       if (err) {

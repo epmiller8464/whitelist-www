@@ -21,6 +21,8 @@ const validate = [check('email').isEmail().withMessage('must be an email').trim(
 router.post('/newsletter/join', validate, function (req, res, next) {
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
+    return res.status(422).json({errors: errors.mapped()})
+
   }
   Subscriber.create({email: req.body.email, subscribeTo: ['news-letter']}, (err, doc) => {
     if (err) {

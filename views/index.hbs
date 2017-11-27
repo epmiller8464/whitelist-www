@@ -359,14 +359,81 @@
             el: '#subscribe-section',
         })
 
-        var app2 = new Vue({
-            el: '#sign-section',
+        //        Vue.component('alert', {
+        //            template: '',
+        //            data: {
+        //                isActive: true,
+        //                error: null
+        //            },
+        //            computed: {
+        //                classObject: function () {
+        //                    return {
+        //                        active: this.isActive && !this.error,
+        //                        'text-danger': this.error && this.error.type === 'fatal'
+        //                    }
+        //                }
+        //            }
+        //        })
+
+        var app3 = new Vue({
+            el: '#signup-form',
+            data: function () {
+                return {
+                    email: '',
+                    csrf: '{{csrfToken}}',
+                    first_name: '',
+                    last_name: '',
+                    confirm_pwd: '',
+                    pwd: ''
+                }
+            },
+            methods: {
+                onSubmit: function (event) {
+
+                    var email = DOMPurify.sanitize(this.$data.email)
+
+                    if (!this.validateEmail(email)) {
+                        $('#alert-label').removeClass('invisible').addClass('text-danger').text('Please enter a valid e=mail address.')
+                        return
+                    }
+//                    var csrfToken = this.$data.csrfToken
+                    $.ajax({
+                        method: 'POST',
+                        url: '/api/v1/users/',
+                        data: this.$data,
+                        dataType: 'json'
+                    }).done(function (data) {
+                        if (data.success) {
+                            $('#sign-up-alert').addClass('alert-success')
+                            $('#alert-msg').text('Account created successfully, please check your email to confirm your account')
+
+                        } else {
+                            $('#sign-up-alert').addClass('alert-danger')
+                            $('#alert-msg').text(data.message)
+                        }
+                    }).fail(function (e) {
+                        $('#alert-label').removeClass('invisible').addClass('text-danger').text('An error occured')
+                    }).always(function () {
+                        setTimeout(function () {
+                            $('#alert-label').addClass('invisible').removeClass('text-danger').text('')
+                        }, 5000)
+                    })
+                    return false
+                },
+                validateEmail: function (email) {
+                    var regex = new RegExp(/.+\@.+\..+/)
+                    if ((!email) || !regex.test(email)) {
+                        return false
+                    }
+                    return true
+                }
+            }
         })
 
-        $('#swytch-video-modal').on('hide.bs.modal', function (e) {
-            videojs('swytch-video').pause()
-        })
         $(document).ready(function () {
+            $('#swytch-video-modal').on('hide.bs.modal', function (e) {
+                videojs('swytch-video').pause()
+            })
             $('#whitelist-form').submit(App.submit)
 //            App.geoLocate(function (err, ip) {
 //                $.ajax({

@@ -36,19 +36,22 @@ var Email = function () {
     // x-user-id:9ab52cb2-d012-11e7-aaa7-3b535aee91ce
 
     value: function sendConfirmation(_ref) {
-      var to = _ref.to,
-          token = _ref.token;
+      var id = _ref.id,
+          to = _ref.to,
+          token = _ref.token,
+          name = _ref.name;
 
       console.log('sending confirmation email');
       var substitutions = {
-        confirm_url: buildUrl('verify/:id?token=' + token),
-        discount: process.env.TGE_PERCENT_DISCOUNT + '%'
+        confirm_url: buildUrl('verify/:id/?token=' + token),
+        name: name
       };
       return new Promise(function (resolve, reject) {
         sgMail.send({
           personalizations: [{
             to: [{
-              email: to
+              email: to,
+              name: name
             }],
             substitutionWrappers: ['{{', '}}'],
             substitutions: substitutions

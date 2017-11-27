@@ -15,10 +15,14 @@ var _require2 = require('express-validator/filter'),
     sanitizeQuery = _require2.sanitizeQuery;
 
 var _require3 = require('../lib/model'),
-    Subscriber = _require3.Subscriber;
+    Subscriber = _require3.Subscriber,
+    User = _require3.User;
 
 var _require4 = require('../lib/mail'),
     Email = _require4.Email;
+
+var _require5 = require('../lib/jsonwebtoken'),
+    verifyToken = _require5.verifyToken;
 /* GET home page. */
 
 
@@ -38,7 +42,6 @@ router.get('/', function (req, res, next) {
 // Every sanitizer method in the validator lib is available as well!
 // ...or throw your own errors using validators created with .custom()
 
-
 // confirm_url: buildUrl(`verify/:id?token=${token}`),
 
 router.post('/login', authenticate, function (req, res, next) {
@@ -49,19 +52,28 @@ router.post('/login', authenticate, function (req, res, next) {
   });
 });
 
-router.post('/signup', function (req, res, next) {
-  res.render('index', {
-    title: 'Swytch',
-    site_key: process.env.RECAPTCHA_KEY,
-    csrfToken: req.csrfToken()
-  });
-});
+// router.get('/verify/:id', function (req, res, next) {
+//
+//   res.render('index', {
+//     title: 'Swytch',
+//     site_key: process.env.RECAPTCHA_KEY,
+//     csrfToken: req.csrfToken()
+//   })
+// })
 
-router.get('/signup/confirmation', function (req, res, next) {
-  res.render('index', {
-    title: 'Swytch',
-    site_key: process.env.RECAPTCHA_KEY,
-    csrfToken: req.csrfToken()
+router.get('/verify/:id', function (req, res, next) {
+
+  var token = req.query.token;
+
+  verifyToken(token).then(function (result) {
+    var updates = { verified: true };
+
+    /// TODO: blacklist the token
+    User.findByIdAndUpdate(req.params.id, updates, function (e, u) {
+      res.redirect('/?verified=true&login=true');
+    });
+  }).catch(function (err) {
+    return next(err);
   });
 });
 
