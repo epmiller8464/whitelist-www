@@ -19,12 +19,7 @@ module.exports = function () {
       lowercase: true,
       required: true,
       minLength: 1,
-      get: function get(v) {
-        return decrypt(v);
-      },
-      set: function set(v) {
-        return encrypt(v);
-      }
+      match: /.+\@.+\..+/
     },
     verified: { type: Boolean, required: true, default: false },
     subscribedTo: [String],

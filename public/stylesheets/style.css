@@ -1,3 +1,4 @@
+@import url(/bootstrap/dist/css/bootstrap.css);
 @import url(font-awesome.min.css);
 .bg-dark {
   background-color: #16222A !important; }
@@ -6,13 +7,24 @@
   background-color: #c8c8c8 !important; }
 
 .text-primary {
-  color: #1d2d38 !important; }
+  color: #16222a !important; }
 
 .text-success {
-  color: #1fdb6a !important; }
+  color: #26a69a !important; }
 
 .text-danger {
   color: #ff0f2f !important; }
+
+.text-muted {
+  color: #757575 !important; }
+
+.text-secondary {
+  color: #868e96 !important; }
+
+.btn-primary {
+  background-color: #16222a;
+  border-color: #fff;
+  color: #fff; }
 
 .alert-success {
   background-color: rgba(31, 219, 106, 0.8);
@@ -29,16 +41,17 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: geometricPrecision;
   color: ghostwhite;
-  background-color: #16222A; }
+  background-color: #16222a; }
 
-a {
-  color: #1d2d38; }
+a,
+.btn-link {
+  color: #fff; }
 
 footer {
   background-color: #16222A;
   margin: 0;
   padding: 20px 0;
-  border-top: 2px #7a7983 solid; }
+  border-top: 2px #868e96 solid; }
 
 select {
   background-color: transparent !important; }
@@ -146,6 +159,6 @@ select,
   background-color: transparent !important; }
 
 .bg-light {
-  color: #1d2d38 !important; }
+  color: #16222a !important; }
 
 /*# sourceMappingURL=style.css.map */

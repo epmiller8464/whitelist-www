@@ -10,9 +10,12 @@ module.exports = function (app) {
   app.use(cors());
   app.set('trust proxy', 1);
 
-  app.use(csurf({ cookie: true }));
+  var marketing = require('./routes/marketing');
+  app.use('/marketing', marketing);
+  // /marketing/newsletter/join
+  app.use('/', csurf({ cookie: true }));
   // let authorize = require('./lib/authorization')
-  app.use(function (req, res, next) {
+  app.use('/', function (req, res, next) {
     res.locals._csrfToken = req.csrfToken();
     // res.locals.user = {user: req.user}
     next();

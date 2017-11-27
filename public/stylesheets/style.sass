@@ -1,3 +1,4 @@
+@import "/bootstrap/dist/css/bootstrap.css"
 @import "font-awesome.min.css"
 $opacity: 1
 
@@ -6,19 +7,22 @@ $pink: rgb(255, 0, 128)
 $drk-pink: rgba(255, 15, 47, 1)
 $danger: #b71c1c
 $drk-grey: rgba(52, 58, 64, 1)
-$grey: rgba(122, 121, 131, 1)
-$grey2: rgba(97, 102, 104, 1)
+//$grey: rgba(122, 121, 131, 1)
+$grey: rgb(134, 142, 150)
+$muted: rgb(117, 117, 117)
 
 $dark: rgba(35, 34, 42, 1)
 $dark-bg: rgba(30, 29, 35, 1)
 
 $yellow: #ffeb3b
 $neon-yellow: #C7FF00
-$primary: rgba(29, 45, 56, 1)
-$success: rgba(31, 219, 106, 1)
+$primary: rgba(22, 34, 42, 1)
+//$success: rgb(0, 137, 123)
+$success: rgb(38, 166, 154)
 $danger: $drk-pink
 $blue: $primary
 $green: $success
+$secondary: $grey
 
 .bg-dark
   background-color: #16222A !important
@@ -35,6 +39,18 @@ $green: $success
 .text-danger
   color: $danger !important
 
+.text-muted
+  color: $muted !important
+
+.text-secondary
+  color: $secondary !important
+
+.btn-primary
+  background-color: $primary
+  border-color: #fff
+  color: #fff
+
+
 .alert-success
   background-color: rgba(31, 219, 106, 0.8)
   color: rgba(248, 248, 255, 1)
@@ -50,10 +66,11 @@ body
   -webkit-font-smoothing: antialiased
   text-rendering: geometricPrecision
   color: rgba(248, 248, 255, 1)
-  background-color: #16222A
+  background-color: $primary
 
-a
-  color: $blue
+a,
+.btn-link
+  color: #fff
 
 footer
   background-color: #16222A
@@ -154,7 +171,6 @@ select,
 #timeline-section
   margin: 0 auto !important
 
-
 #main.section-hero
   height: 100vh !important
 
@@ -170,3 +186,5 @@ select,
 
 .bg-light
   color: $blue !important
+
+

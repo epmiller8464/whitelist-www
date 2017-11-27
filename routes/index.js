@@ -2,7 +2,10 @@
 const express = require('express')
 const router = express.Router()
 const authenticate = require('../lib/authenticate')
-
+const {check, validationResult, query} = require('express-validator/check')
+const {matchedData, sanitize, sanitizeQuery} = require('express-validator/filter')
+const {Subscriber} = require('../lib/model')
+const {Email} = require('../lib/mail')
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index', {
@@ -13,10 +16,17 @@ router.get('/', function (req, res, next) {
     csrfToken: req.csrfToken()
   })
 })
-router.post('/subscribe', function (req, res, next) {
+// Every validator method in the validator lib is available as a
+// method in the check() APIs.
+// You can customize per validator messages with .withMessage()
 
-  res.status(200).json({success: true})
-})
+// Every sanitizer method in the validator lib is available as well!
+// ...or throw your own errors using validators created with .custom()
+
+
+
+// confirm_url: buildUrl(`verify/:id?token=${token}`),
+
 router.post('/login', authenticate, function (req, res, next) {
   res.render('login', {
     title: 'Swytch',

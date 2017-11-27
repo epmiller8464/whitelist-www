@@ -20,6 +20,7 @@
     "cors": "^2.8.4",
     "csurf": "^1.9.0",
     "debug": "^2.6.9",
+    "dompurify": "^1.0.2",
     "dotenv": "^4.0.0",
     "express": "~4.15.5",
     "express-handlebars": "^3.0.0",

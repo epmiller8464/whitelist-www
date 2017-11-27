@@ -16,18 +16,20 @@
                     <h4 class="text-center text-muted">
                         Blockchain technology unlocking a sustainable and equitable energy future
                     </h4>
-                    <div class="w-100 text-center mt-3 mb-3">
-                        <button class="btn btn-link fa-4x" data-toggle="modal" data-target="#swytch-video-modal">
+                    <div class="col col-sm w-auto text-center mt-sm-3 mb-sm-3">
+                        <button class="btn btn-link fa-4x text-success" data-toggle="modal"
+                                data-target="#swytch-video-modal">
                             <span class="fa fa-play-circle"></span>
                         </button>
                         <br/>
                         <b class="fa-2x text-bold">Learn About Swytch</b>
                     </div>
-                    <div id="subscribe-section" class="my-5 text-center">
+                    <div id="subscribe-section" class="col-sm py-5 m-auto text-center">
                         <subscribe-form></subscribe-form>
-                        <b class="text-muted">Don't worry we will never share or sell your information.</b>
+                        <b class="text-muted w-100">Don't worry we will never share or sell your information.</b>
+                        <label id="alert-label" class="w-100 clearfix invisible"></label>
                     </div>
-                    <div class="text-center my-5 py-lg-5">
+                    <div class="text-center py-5">
                         <a href="#timeline-section" class="btn btn-link text-muted mt-5">
                             <span class="fa fa-chevron-down fa-2x"></span>
                         </a>
@@ -304,21 +306,52 @@
 </section>
 
 {{#section 'scripts'}}
-
+    <script type="text/javascript" src="/DOMPurify/dist/purify.min.js"></script>
     <script src="/javascripts/app.bundle.min.js"></script>
 
     <script>
         Vue.component('subscribe-form', {
-            template: '<form id="subscribe-form" class="" method="post" action="/subscribe"><div class="input-group input-group-lg"><input type="text" class="form-control" placeholder="Enter your e-mail" aria-label="Enter your e-mail" v-model="email"><span class="input-group-btn"><button class="btn btn-primary" type="button" @click="onSubscribe">Subscribe</button></span></div></form>',
+            template: '<form id="subscribe-form" class="" method="post" action="/subscribe"><input type="hidden" v-model="csrfToken"><div class="input-group input-group-lg input-group-sm"><input type="email" class="form-control" placeholder="Enter your e-mail" aria-label="Enter your e-mail" v-model="email"><span class="input-group-btn"><button class="btn btn-primary" type="button" @click="onSubscribe">Subscribe</button></span></div></form>',
             data: function () {
                 return {
-                    email: ''
+                    email: 'epmiller8464@gmail.com',
+                    csrfToken: '{{csrfToken}}'
                 }
             },
             methods: {
                 onSubscribe: function (event) {
-                    console.log(event)
-                    console.log(this.$data.email)
+                    var email = DOMPurify.sanitize(this.$data.email)
+
+                    if (!this.validateEmail(email)) {
+                        $('#alert-label').removeClass('invisible').addClass('text-danger').text('Please enter a valid e=mail address.')
+                        return
+                    }
+                    var csrfToken = this.$data.csrfToken
+                    $.ajax({
+                        method: 'POST',
+                        url: '/marketing/newsletter/join',
+                        data: {email: email, csrfToken: csrfToken},
+                        dataType: 'json'
+                    }).done(function (data) {
+                        if (data.success) {
+                            $('#alert-label').removeClass('invisible').addClass('text-success').text('Thank you!')
+                        } else {
+                            $('#alert-label').removeClass('invisible').addClass('text-danger').text(data.message)
+                        }
+                    }).fail(function (e) {
+                        $('#alert-label').removeClass('invisible').addClass('text-danger').text('An error occured')
+                    }).always(function () {
+                        setTimeout(function () {
+                            $('#alert-label').addClass('invisible').removeClass('text-danger').text('')
+                        }, 5000)
+                    })
+                },
+                validateEmail: function (email) {
+                    var regex = new RegExp(/.+\@.+\..+/)
+                    if ((!email) || !regex.test(email)) {
+                        return false
+                    }
+                    return true
                 }
             }
         })
