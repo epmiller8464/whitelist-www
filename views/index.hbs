@@ -314,7 +314,7 @@
             template: '<form id="subscribe-form" class="" method="post" action="/subscribe"><input type="hidden" v-model="csrfToken"><div class="input-group input-group-lg input-group-sm"><input type="email" class="form-control" placeholder="Enter your e-mail" aria-label="Enter your e-mail" v-model="email"><span class="input-group-btn"><button class="btn btn-primary" type="button" @click="onSubscribe">Subscribe</button></span></div></form>',
             data: function () {
                 return {
-                    email: 'epmiller8464@gmail.com',
+                    email: '',
                     csrfToken: '{{csrfToken}}'
                 }
             },
@@ -358,6 +358,11 @@
         var app2 = new Vue({
             el: '#subscribe-section',
         })
+
+        var app2 = new Vue({
+            el: '#sign-section',
+        })
+
         $('#swytch-video-modal').on('hide.bs.modal', function (e) {
             videojs('swytch-video').pause()
         })
