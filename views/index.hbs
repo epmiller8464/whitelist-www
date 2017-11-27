@@ -306,7 +306,6 @@
 </section>
 
 {{#section 'scripts'}}
-    <script type="text/javascript" src="/DOMPurify/dist/purify.min.js"></script>
     <script src="/javascripts/app.bundle.min.js"></script>
 
     <script>
@@ -320,7 +319,7 @@
             },
             methods: {
                 onSubscribe: function (event) {
-                    var email = DOMPurify.sanitize(this.$data.email)
+                    var email = this.$data.email
 
                     if (!this.validateEmail(email)) {
                         $('#alert-label').removeClass('invisible').addClass('text-danger').text('Please enter a valid e=mail address.')
@@ -389,9 +388,7 @@
             },
             methods: {
                 onSubmit: function (event) {
-
-                    var email = DOMPurify.sanitize(this.$data.email)
-
+                    var email = this.$data.email
                     if (!this.validateEmail(email)) {
                         $('#alert-label').removeClass('invisible').addClass('text-danger').text('Please enter a valid e=mail address.')
                         return
