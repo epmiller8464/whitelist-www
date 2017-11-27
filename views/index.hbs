@@ -1,14 +1,12 @@
 {{#section  'head'}}
-    <!--<script src="https://www.google.com/recaptcha/api.js" async defer></script>-->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 {{/section}}
-
-
-<section id="main" class="section-hero hero-solar">
+<section id="intro" class="container-fluid section-hero hero-solar">
     <div class="section-overlay gradient-overlay">
         <div class="jumbotron bg-clear">
-            <div class="container p-3">
-                <div class="w-75 m-auto p-1">
+            <div class="container">
+                <div class="col-sm">
                     <h1 class="text-center">
                         SWYTCH IS A RENEWABLE<br/>
                         ENERGY ACCELERATOR<br/>
@@ -16,7 +14,7 @@
                     <h4 class="text-center text-muted">
                         Blockchain technology unlocking a sustainable and equitable energy future
                     </h4>
-                    <div class="col col-sm w-auto text-center mt-sm-3 mb-sm-3">
+                    <div class="text-center">
                         <button class="btn btn-link fa-4x text-success" data-toggle="modal"
                                 data-target="#swytch-video-modal">
                             <span class="fa fa-play-circle"></span>
@@ -24,13 +22,13 @@
                         <br/>
                         <b class="fa-2x text-bold">Learn About Swytch</b>
                     </div>
-                    <div id="subscribe-section" class="col-sm py-5 m-auto text-center">
+                    <div id="subscribe-section" class="col-sm w-75 py-5 m-auto text-center">
                         <subscribe-form></subscribe-form>
                         <b class="text-muted w-100">Don't worry we will never share or sell your information.</b>
                         <label id="alert-label" class="w-100 clearfix invisible"></label>
                     </div>
                     <div class="text-center py-5">
-                        <a href="#timeline-section" class="btn btn-link text-muted mt-5">
+                        <a href="#what" class="btn btn-link text-muted mt-5">
                             <span class="fa fa-chevron-down fa-2x"></span>
                         </a>
                     </div>
@@ -39,12 +37,31 @@
         </div>
     </div>
 </section>
-<section id="timeline-section" class="section-hero text-dark">
+<section id="what" class="container-fluid section-hero">
     <div class="section-overlay">
         <div class="container">
-            <h1>What is Swytch?</h1>
             <div class="row">
-                <div class="col-12">
+                <div class="col-sm m-auto text-center fa-4x py-5 my-5">
+                    <h1>Dont forget to stay connected with us:</h1>
+                    <span class="fa fa-github m-3"></span>
+                    <span class="m-3 fa fa-twitter"></span>
+                    <span class="m-3 fa fa-linkedin"></span>
+                    <span class="m-3 fa fa-facebook"></span>
+                    <span class="m-3 fa fa-youtube"></span>
+                    <span class="m-3 fa fa-medium"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="what" class="container-fluid section-hero">
+    <div class="section-overlay bg-white text-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <h1>What is Swytch?</h1>
+                    <hr class="bg-light"/>
                     <p class="lead">
                         Swytch is a secure token for verifying the generation of sustainable energy to
                         incentivize the spontaneous formation of open and decentralized global power
@@ -55,15 +72,72 @@
                         commons infrastructure for the verified generation and exchange of tokens of value and trust.
                     </p>
                 </div>
+
             </div>
-            <!--<hr class="bg-light"/>-->
-            <div class="row mb-5">
-                <div class="w-100">
+            <div class="row my-5 py-5">
+                <div class="col-sm col-sm-10 m-auto">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <video preload="auto" class="embed-responsive-item" src="{{VIDEO_URL}}" controls></video>
+                    </div>
                 </div>
+
             </div>
             <div class="row">
-                <div class="col">
-                    <h2 class="text-muted">Our Goal</h2>
+                <div class="col-sm">
+                    <h1 class="h1">How it works</h1>
+                    <hr class="bg-dark"/>
+                </div>
+                <div class="row my-5 ">
+                    <div class="col-sm">
+                        <p class="lead">The Swytch platform provides its users the means to generate Swytch currency
+                            through
+                            renewable energy production and the ability to do transactions using the currency through a
+                            wallet
+                            application.
+                        </p>
+                        <h5><b>The Swytch platform consists of the following elements:</b></h5>
+                        <p class="lead">
+                            <b class="">Mobile clients - </b> an app which acts as a currency wallet; displays Swytch
+                            your
+                            balance and
+                            allows you
+                            to spend and receive Swytch; shows energy production for the nodes linked to your solar
+                            arrays.
+                        </p>
+                        <p class="lead">
+                            <b>Nodes -</b> an IoT device which consists of a tracking device which measures energy
+                            production
+                            for your solar array; a storage device which holds a copy of the whole blockchain; a
+                            computing
+                            device which
+                            calculates Swytch reward amounts through an Oracle.
+                        </p>
+                        <p class="lead">
+                            A contribution to the network to ensure tamper-proof blocks validation through Scrypt
+                            Proof-of-work.
+                        </p>
+                    </div>
+                    <div class="col-sm m-auto">
+                        <figure>
+                            <img class="card-img" src="/images/swytch-how-it-works.jpg">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+</section>
+<section id="how-it-works" class="container-fluid section-hero">
+    <div class="section-overlay gradient-overlay-360">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm text-center">
+                    <h1 class="page-header">Why Swytch?</h1>
+                </div>
+            </div>
+            <div class="row my-5 py-5">
+                <div class="col-sm">
+                    <h2 class="">Our Goal</h2>
                     <hr class="border-dark"/>
                     <ol class="ml-2 pl-2" style="font-size: 1.25em;">
                         <li>
@@ -92,13 +166,13 @@
                         </li>
                     </ol>
                 </div>
-                <article class="col">
-                    <h2 class="text-muted">Our Mission</h2>
+                <div class="col-sm">
+                    <h2>Our Mission</h2>
                     <hr class="border-dark"/>
                     <blockquote class="blockquote">
                         “To create a sustainable and equitable energy future”
                     </blockquote>
-                    <p class="">
+                    <p>
                         Swytch exists to facilitate the transformation of energy markets to meet the demands of our
                         changing world. In today’s electricity markets, consumers depend on a centralized grid that
                         passes on both the cost of generating electricity and the cost of transmitting electricity on
@@ -122,49 +196,12 @@
                         solution is sound. Let’s work together to accelerate the Swytch to a sustainable and equitable
                         energy future
                     </p>
-                </article>
+                </div>
             </div>
-
         </div>
     </div>
 </section>
-<section class="container-fluid bg-white p-lg-5 text-dark">
-    <div class="container p-lg-5">
-        <h1 class="h1">How it works</h1>
-        <hr class="bg-dark"/>
-        <div class="row">
-            <div class="col-6">
-                <p class="lead">The Swytch platform provides its users the means to generate Swytch currency through
-                    renewable energy production and the ability to do transactions using the currency through a wallet
-                    application.
-                </p>
-                <h5><b>The Swytch platform consists of the following elements:</b></h5>
-                <p class="lead">
-                    <b class="">Mobile clients - </b> an app which acts as a currency wallet; displays Swytch your
-                    balance and
-                    allows you
-                    to spend and receive Swytch; shows energy production for the nodes linked to your solar arrays.
-                </p>
-                <p class="lead">
-                    <b>Nodes -</b> an IoT device which consists of a tracking device which measures energy production
-                    for your solar array; a storage device which holds a copy of the whole blockchain; a computing
-                    device which
-                    calculates Swytch reward amounts through an Oracle.
-                </p>
-                <p class="lead">
-                    A contribution to the network to ensure tamper-proof blocks validation through Scrypt Proof-of-work.
-                </p>
-            </div>
-            <div class="col-6">
-                <img class="card-img" src="/images/swytch-how-it-works.jpg">
-            </div>
-
-        </div>
-    </div>
-</section>
-<!--<section class="container-fluid bg-light">-->
-<!--<div class="m-auto p-5 w-75  text-center">-->
-<section id="timeline-section" class="section-hero hero-nasa text-dark">
+<section id="whitepaper" class="section-hero hero-nasa text-dark">
     <div class="section-overlay dark-overlay">
         <div class="container text-center">
             <div class="p-4 border border-dark">
@@ -225,7 +262,7 @@
                     </div>
                 </div>
                 <div class="card w-25 bg-clear ml-2 mr-2" style="width: 25% !important;">
-                    <img class="card-img-top rounded-circle" src="/images/team/fff.png" alt="Card image cap">
+                    <img class="card-img-top rounded-circle" src="/images/team/miller.png" alt="Card image cap">
                     <div class="card-body">
                         <h4 class="card-title">ERIC MILLER</h4>
                         <p class="card-text">Lead Engineer, Software Engineer and Systems Architect</p>
@@ -236,8 +273,7 @@
         </div>
     </div>
 </section>
-
-<section id="timeline-section" class="section-hero">
+<section id="advisors" class="section-hero">
     <div class="section-overlay gradient-overlay-360">
         <div class="container">
             <h1 class="display-4">The Advisory Board</h1>
@@ -304,10 +340,8 @@
         </div>
     </div>
 </section>
-
 {{#section 'scripts'}}
     <script src="/javascripts/app.bundle.min.js"></script>
-
     <script>
         Vue.component('subscribe-form', {
             template: '<form id="subscribe-form" class="" method="post" action="/subscribe"><input type="hidden" v-model="csrfToken"><div class="input-group input-group-lg input-group-sm"><input type="email" class="form-control" placeholder="Enter your e-mail" aria-label="Enter your e-mail" v-model="email"><span class="input-group-btn"><button class="btn btn-primary" type="button" @click="onSubscribe">Subscribe</button></span></div></form>',
@@ -357,23 +391,6 @@
         var app2 = new Vue({
             el: '#subscribe-section',
         })
-
-        //        Vue.component('alert', {
-        //            template: '',
-        //            data: {
-        //                isActive: true,
-        //                error: null
-        //            },
-        //            computed: {
-        //                classObject: function () {
-        //                    return {
-        //                        active: this.isActive && !this.error,
-        //                        'text-danger': this.error && this.error.type === 'fatal'
-        //                    }
-        //                }
-        //            }
-        //        })
-
         var app3 = new Vue({
             el: '#signup-form',
             data: function () {
@@ -426,7 +443,6 @@
                 }
             }
         })
-
         $(document).ready(function () {
             $('#swytch-video-modal').on('hide.bs.modal', function (e) {
                 videojs('swytch-video').pause()

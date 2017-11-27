@@ -88,7 +88,6 @@ select,
     transform: rotate(360deg); } }
 
 .section-hero {
-  position: relative;
   width: 100vw;
   height: 100%;
   background-size: cover;
@@ -152,5 +151,8 @@ select,
 
 .bg-light {
   color: #16222a !important; }
+
+.container-fluid.section-hero {
+  padding: 0; }
 
 /*# sourceMappingURL=style.css.map */
