@@ -3,8 +3,12 @@
 var hbs = require('express-handlebars');
 var moment = require('moment');
 module.exports = function () {
+  var layout = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'layout';
+
   return hbs.create({
-    extname: 'hbs', defaultLayout: 'layout', helpers: {
+    extname: 'hbs',
+    defaultLayout: layout,
+    helpers: {
       section: function section(name, options) {
         if (!this._sections) {
           this._sections = {};

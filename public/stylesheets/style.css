@@ -3,6 +3,14 @@
 .bg-dark {
   background-color: #16222A !important; }
 
+.bg-dark-alpa {
+  background-color: rgba(22, 34, 42, 0.9) !important;
+  border: 1px solid #26a69a; }
+
+.modal-content.bg-dark-alpa input {
+  background-color: #16222a !important;
+  border: 1px solid #26a69a; }
+
 .bg-light {
   background-color: #c8c8c8 !important; }
 

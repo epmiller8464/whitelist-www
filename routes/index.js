@@ -7,7 +7,8 @@ const {matchedData, sanitize, sanitizeQuery} = require('express-validator/filter
 const {Subscriber, User} = require('../lib/model')
 const {Email} = require('../lib/mail')
 const {verifyToken} = require('../lib/jsonwebtoken')
-/* GET home page. */
+const validate = [check('email').isEmail().withMessage('must be an email').trim().normalizeEmail(), sanitize('email').trim()]
+
 router.get('/', function (req, res, next) {
   res.render('index', {
     title: 'Swytch',
@@ -16,6 +17,12 @@ router.get('/', function (req, res, next) {
     WP_URL: process.env.WHITEPAPER_URL,
     csrfToken: req.csrfToken()
   })
+})
+router.post('/login', validate, authenticate, (req, res, next) => {
+  next()
+}, function (req, res, next) {
+
+  res.status(200).send()
 })
 // Every validator method in the validator lib is available as a
 // method in the check() APIs.
@@ -26,13 +33,13 @@ router.get('/', function (req, res, next) {
 
 // confirm_url: buildUrl(`verify/:id?token=${token}`),
 
-router.post('/login', authenticate, function (req, res, next) {
-  res.render('login', {
-    title: 'Swytch',
-    site_key: process.env.RECAPTCHA_KEY,
-    csrfToken: req.csrfToken()
-  })
-})
+// router.post('/login', authenticate, function (req, res, next) {
+//   res.render('login', {
+//     title: 'Swytch',
+//     site_key: process.env.RECAPTCHA_KEY,
+//     csrfToken: req.csrfToken()
+//   })
+// })
 
 // router.get('/verify/:id', function (req, res, next) {
 //

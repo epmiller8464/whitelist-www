@@ -1,7 +1,8 @@
 'use strict'
 process.env.NODE_ENV = 'development'
 require('dotenv').config()
-const {confirmEmailToken, verifyToken} = require('../lib/jsonwebtoken')
+// process.env.PWD = __dirname = process.env.PWD + '/whitelist-www'
+const {confirmEmailToken, verifyToken, accessToken, verifyAccessToken} = require('../lib/jsonwebtoken')
 const uuid = require('uuid')
 test('emailVerificationToken', done => {
   let id = uuid.v4()
@@ -33,4 +34,23 @@ test('verifyEmailVerificationToken', done => {
     done()
   })
 
+})
+
+test('rsa token', done => {
+  let id = uuid.v4()
+  accessToken(id)
+  .then((token) => {
+    verifyAccessToken(token)
+    .then((result) => {
+      console.log(result)
+      expect(result).not.toBeNull()
+      done()
+    }).catch((err) => {
+      expect(err).toBeNull()
+      done()
+    })
+  }).catch((err) => {
+    expect(err).toBeNull()
+    done()
+  })
 })

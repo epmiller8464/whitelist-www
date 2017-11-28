@@ -80,10 +80,12 @@ module.exports = function () {
     }
   });
 
-  UserSchema.methods.comparePassword = function (password, callback) {
+  UserSchema.methods.comparePassword = function (password, cb) {
     bcrypt.compare(password, this.pwd, function (error, matches) {
-      if (error) return callback(error);
-      callback(null, matches);
+      if (error) {
+        return cb(error);
+      }
+      return cb(null, matches);
     });
   };
   try {

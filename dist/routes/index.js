@@ -23,8 +23,8 @@ var _require4 = require('../lib/mail'),
 
 var _require5 = require('../lib/jsonwebtoken'),
     verifyToken = _require5.verifyToken;
-/* GET home page. */
 
+var validate = [check('email').isEmail().withMessage('must be an email').trim().normalizeEmail(), sanitize('email').trim()];
 
 router.get('/', function (req, res, next) {
   res.render('index', {
@@ -35,6 +35,12 @@ router.get('/', function (req, res, next) {
     csrfToken: req.csrfToken()
   });
 });
+router.post('/login', validate, authenticate, function (req, res, next) {
+  next();
+}, function (req, res, next) {
+
+  res.status(200).send();
+});
 // Every validator method in the validator lib is available as a
 // method in the check() APIs.
 // You can customize per validator messages with .withMessage()
@@ -44,13 +50,13 @@ router.get('/', function (req, res, next) {
 
 // confirm_url: buildUrl(`verify/:id?token=${token}`),
 
-router.post('/login', authenticate, function (req, res, next) {
-  res.render('login', {
-    title: 'Swytch',
-    site_key: process.env.RECAPTCHA_KEY,
-    csrfToken: req.csrfToken()
-  });
-});
+// router.post('/login', authenticate, function (req, res, next) {
+//   res.render('login', {
+//     title: 'Swytch',
+//     site_key: process.env.RECAPTCHA_KEY,
+//     csrfToken: req.csrfToken()
+//   })
+// })
 
 // router.get('/verify/:id', function (req, res, next) {
 //

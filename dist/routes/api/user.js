@@ -23,7 +23,7 @@ var _require5 = require('../../lib/jsonwebtoken'),
     confirmEmailToken = _require5.confirmEmailToken,
     verifyToken = _require5.verifyToken;
 
-var validate = [check('email').isEmail().withMessage('must be an email').trim().normalizeEmail(), sanitize('email').trim().normalizeEmail()];
+var validate = [check('email').isEmail().withMessage('must be an email').trim().normalizeEmail(), sanitize('email').trim()];
 
 router.post('/', validate, function (req, res, next) {
   var errors = validationResult(req);

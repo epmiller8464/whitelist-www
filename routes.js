@@ -21,6 +21,9 @@ module.exports = function (app) {
   const user = require('./routes/api/user')
   apiApp.use('/api/v1/users', user)
 
+  const auth = require('./routes/api/auth')
+  apiApp.use('/api/v1/auth', auth)
+
   apiApp.use('/api/v1', function (req, res, next) {
     var err = new Error('Not Found')
     err.status = 404
@@ -45,6 +48,8 @@ module.exports = function (app) {
 
   const marketing = require('./routes/marketing')
   app.use('/marketing', marketing)
+  // let platform = require('./platform')()
+  app.use(require('./platform')())
   // /marketing/newsletter/join
   app.use('/', csurf({cookie: true}))
   // let authorize = require('./lib/authorization')

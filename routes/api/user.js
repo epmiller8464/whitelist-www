@@ -6,7 +6,7 @@ const {matchedData, sanitize, sanitizeQuery} = require('express-validator/filter
 const {User} = require('../../lib/model')
 const {Email} = require('../../lib/mail')
 const {confirmEmailToken, verifyToken} = require('../../lib/jsonwebtoken')
-const validate = [check('email').isEmail().withMessage('must be an email').trim().normalizeEmail(), sanitize('email').trim().normalizeEmail()]
+const validate = [check('email').isEmail().withMessage('must be an email').trim().normalizeEmail(), sanitize('email').trim()]
 
 router.post('/', validate, function (req, res, next) {
   const errors = validationResult(req)
