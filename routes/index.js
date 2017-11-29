@@ -18,12 +18,12 @@ router.get('/', function (req, res, next) {
     csrfToken: req.csrfToken()
   })
 })
-router.post('/login', validate, authenticate, (req, res, next) => {
-  next()
-}, function (req, res, next) {
-
-  res.status(200).send()
-})
+// router.post('/login', validate, authenticate, (req, res, next) => {
+//   next()
+// }, function (req, res, next) {
+//
+//   res.status(200).send()
+// })
 // Every validator method in the validator lib is available as a
 // method in the check() APIs.
 // You can customize per validator messages with .withMessage()
@@ -66,6 +66,11 @@ router.get('/verify/:id', function (req, res, next) {
   }).catch((err) => {
     return next(err)
   })
+})
+
+router.get('/error', (req, res, next) => {
+
+  res.render('error', {message: 'Noting to see here'})
 })
 
 module.exports = router
