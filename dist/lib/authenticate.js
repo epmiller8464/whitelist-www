@@ -27,15 +27,6 @@ module.exports = function (req, res, next) {
 
     if (!user && !hasCookie(req)) {
       return res.redirect('/login');
-      // let error = new Error()
-      // error.status = 400
-      // if (info || info.message) {
-      //   error.message = info.message
-      // } else {
-      //   error = new Error(info.message)
-      // }
-      // return next(error)
-      // return next(new Error('Unauthorized'))
     }
 
     if (!user) {

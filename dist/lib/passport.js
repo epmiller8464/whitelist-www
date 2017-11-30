@@ -20,12 +20,12 @@ module.exports = function (passport) {
       }
 
       if (!user) {
-        return done(null, false, { message: 'Incorrect username.' });
+        return done(new Error('Incorrect username.'), false, { message: 'Incorrect username.' });
       }
 
       user.comparePassword(password, function (err, matches) {
         if (err || !matches) {
-          return done(null, false, { message: 'Incorrect password.' });
+          return done(new Error('Incorrect password.'), false, { message: 'Incorrect password.' });
         }
         return done(null, user.toObject());
       });

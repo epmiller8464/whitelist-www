@@ -1,7 +1,10 @@
+{{#section  'head'}}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{{/section}}
 <div class="col-sm">
     <div class="py-5">
         <h5>Dear Supporter,</h5>
-        <p class="">
+        <p>
             <em>Swytch,</em> as a socially responsible business and focusing on the safety of your
             contributions, we require everyone to go through the identification procedure and whitelist
             their crypto wallet addresses.
@@ -9,7 +12,7 @@
         <p>
             In a few weeks we will be sending an email with instructions on how to complete the whitelist process.<br/>
             It will not contain information on where to send your contribution. It will include instructions on how to
-            begin the KYC process with a partner company <a href="https://coincart.co/">CoinCart</a>
+            begin our KYC process and contribution.
         </p>
         <p>Thank you for your interest in the <em>Swytch</em> Token Generation Event.<br/>
             Before you can be added to our whitelist we just need a bit for information from you.</p>
@@ -103,3 +106,80 @@
         </div>
     </form>
 </div>
+{{#section 'scripts'}}
+    <script src="/javascripts/app.bundle.min.js"></script>
+    <script>
+        var vue = new Vue({
+            el: '#identity-form',
+            data: function () {
+                return {
+                    country_code: '',
+                    csrf: '{{csrfToken}}',
+                    cryptoType: '',
+                    first_name: '{{user.first_name}}',
+                    last_name: '{{user.last_name}}',
+                    usCitizenAttestation: false,
+                    purchaseAmount: '',
+                    token: ''
+                }
+            },
+            methods: {
+                onWhitelist: function (event) {
+                    var email = this.$data.email
+                    if (!this.validateEmail(email)) {
+                        $('#alert-label').removeClass('invisible').addClass('text-danger').text('Please enter a valid e=mail address.')
+                        return
+                    }
+                    console.log(this.$data)
+                    $.ajax({
+                        method: 'POST',
+                        url: '/whitelist',
+                        data: this.$data,
+                        dataType: 'json'
+                    }).done(function (data) {
+                        // window.location = '/platform'
+                        // $('#login-alert').removeClass('invisible')
+                        // if (data.success) {
+                        // $('#login-alert').addClass('alert-success').children('.message').text('Account created successfully, please check your email to confirm your account')
+                        //
+                        // } else {
+                        //    $('#login-alert').addClass('alert-danger').children('.message').text('data.message')
+                        // }
+                    }).fail(function (e) {
+                        $('#login-alert').removeClass('invisible').addClass('alert-danger').children('.message').text('data.message')
+                    }).always(function () {
+                        setTimeout(function () {
+                            $('#alert-label').addClass('invisible').removeClass('text-danger').text('')
+                        }, 5000)
+                    })
+                    return false
+                },
+                validateForm: function () {
+                    // var regex = new RegExp(/.+\@.+\..+/)
+                    // if ((!email) || !regex.test(email)) {
+                    //     return false
+                    // }
+                    return true
+                },
+                recaptchaCallback: function (token) {
+                    // vm.token = null
+                    if (!this.validateForm()) {
+                        this.resetRecaptcha()
+                        return
+                    }
+                    this.token = token
+                    $('#submit').prop('disabled', false)
+                    $('#submit').removeClass('hide')
+                },
+                resetRecaptcha: function () {
+                    // $('#submit').prop('disabled', true)
+                    // $('#submit').addClass('hide')
+                    // vm.token = null
+                    grecaptcha.reset()
+                }
+            }
+        })
+
+        var recaptchaCallback = vue.recaptchaCallback
+    </script>
+{{/section}}

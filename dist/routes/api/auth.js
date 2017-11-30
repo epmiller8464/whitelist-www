@@ -25,8 +25,13 @@ var _require5 = require('../../lib/jsonwebtoken'),
 
 var validate = [check('email').isEmail().withMessage('must be an email').trim().normalizeEmail(), sanitize('email').trim()];
 
-router.post('/login', validate, authenticate, function (req, res, next) {
-  res.status(200).json({ token: '' });
+router.post('/login', validate, authenticate, function (err, req, res, next) {
+  if (err) {
+    return res.status(400).json({ error: true, message: 'Unauthorized' });
+  }
+  return next();
+}, function (req, res, next) {
+  res.status(200).json({});
 });
 
 module.exports = router;

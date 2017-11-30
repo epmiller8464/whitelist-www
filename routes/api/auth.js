@@ -9,8 +9,13 @@ const {Email} = require('../../lib/mail')
 const {accessToken} = require('../../lib/jsonwebtoken')
 const validate = [check('email').isEmail().withMessage('must be an email').trim().normalizeEmail(), sanitize('email').trim()]
 
-router.post('/login', validate, authenticate, function (req, res, next) {
-  res.status(200).json({token: ''})
+router.post('/login', validate, authenticate, (err, req, res, next) => {
+  if (err) {
+    return res.status(400).json({error: true, message: 'Unauthorized'})
+  }
+  return next()
+}, function (req, res, next) {
+  res.status(200).json({})
 })
 
 module.exports = router

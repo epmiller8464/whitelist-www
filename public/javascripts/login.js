@@ -11,28 +11,20 @@ new Vue({
   },
   methods: {
     onLogin: function (event) {
-      var email = this.$data.email
-      if (!this.validateEmail(email)) {
-        $('#alert-label').removeClass('invisible').addClass('text-danger').text('Please enter a valid e-mail address.')
-        return
+      if (!this.validate()) {
+        return false
       }
-      console.log(this.$data)
       $.ajax({
         method: 'POST',
         url: '/api/v1/auth/login',
         data: this.$data,
         dataType: 'json'
       }).done(function (data) {
-        // $('#login-alert').removeClass('invisible')
         if (data.success) {
-          $('#login-alert').addClass('alert-danger').children('.message').text(data.message)
-        } else {
           window.location = '/platform'
+        } else {
+          $('#login-alert').addClass('alert-danger').children('.message').text(data.message)
         }
-        // $('#login-alert').addClass('alert-success').children('.message').text('Account created successfully, please check your email to confirm your account')
-        //
-        // } else {
-        // }
       }).fail(function (e) {
         if (e.responseJSON) {
           $('#login-alert').removeClass('invisible').addClass('alert-danger').children('.message').text(e.responseJSON.message)
@@ -47,9 +39,15 @@ new Vue({
       })
       return false
     },
-    validateEmail: function (email) {
+    validate: function () {
       var regex = new RegExp(/.+\@.+\..+/)
+      var email = this.$data.email
       if ((!email) || !regex.test(email)) {
+        $('#login-alert').removeClass('invisible').addClass('alert-danger').children('.message').text('Please enter a valid e-mail address.')
+        return false
+      }
+      if ((!this.$data.pwd) || this.$data.pwd.length < 6) {
+        $('#login-alert').removeClass('invisible').addClass('alert-danger').children('.message').text('Password is not long enough.')
         return false
       }
       return true
