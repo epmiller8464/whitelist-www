@@ -4,7 +4,7 @@ new Vue({
   el: '#login-form',
   data: function () {
     return {
-      email: 'epmiller8464@gmail.com',
+      email: '',
       csrf: '',
       pwd: ''
     }
@@ -33,9 +33,8 @@ new Vue({
         }
 
       }).always(function () {
-        setTimeout(function () {
-          $('#alert-label').addClass('invisible').removeClass('text-danger').text('')
-        }, 5000)
+        this.$data.email = ''
+        this.$data.pwd = ''
       })
       return false
     },
@@ -51,6 +50,11 @@ new Vue({
         return false
       }
       return true
+    },
+    clear: function () {
+      this.$data.email = ''
+      this.$data.pwd = ''
     }
   }
 })
+

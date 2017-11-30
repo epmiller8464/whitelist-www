@@ -4,7 +4,7 @@ new Vue({
   el: '#login-form',
   data: function data() {
     return {
-      email: 'epmiller8464@gmail.com',
+      email: '',
       csrf: '',
       pwd: ''
     };
@@ -32,9 +32,8 @@ new Vue({
           $('#login-alert').removeClass('invisible').addClass('alert-danger').children('.message').text('An error occurred please try again later.');
         }
       }).always(function () {
-        setTimeout(function () {
-          $('#alert-label').addClass('invisible').removeClass('text-danger').text('');
-        }, 5000);
+        this.$data.email = '';
+        this.$data.pwd = '';
       });
       return false;
     },
@@ -50,6 +49,10 @@ new Vue({
         return false;
       }
       return true;
+    },
+    clear: function clear() {
+      this.$data.email = '';
+      this.$data.pwd = '';
     }
   }
 });

@@ -394,7 +394,7 @@
         var app2 = new Vue({
             el: '#subscribe-section',
         })
-        var app3 = new Vue({
+        var registerForm = new Vue({
             el: '#signup-form',
             data: function () {
                 return {
@@ -442,6 +442,14 @@
                         return false
                     }
                     return true
+                },
+                clear: function () {
+                    this.$data.email = ''
+                    this.$data.csrf = ''
+                    this.$data.first_name = ''
+                    this.$data.last_name = ''
+                    this.$data.confirm_pwd = ''
+                    this.$data.pwd = ''
                 }
             }
         })
@@ -450,21 +458,15 @@
             $('#swytch-video-modal').on('hide.bs.modal', function (e) {
                 videojs('swytch-video').pause()
             })
-            $('#whitelist-form').submit(App.submit)
-//            App.geoLocate(function (err, ip) {
-//                $.ajax({
-//                    method: 'GET',
-//                    url: '/geo-locate?ip=' + ip,
-//                }).done(function (data) {
-//                    $('[data-country]').text(data.country)
-//                    $('[data-ip]').text(ip)
-//                }).fail(function (e) {
-//                    console.error(e)
-//                })
-//            })
-        })
 
-        var recaptchaCallback = App.recaptchaCallback
+            $('#login-modal').on('hide.bs.modal', function (e) {
+                $('input[type="email"]').val('')
+                $('input[type="password"]').val('')
+            })
+            $('#signup-modal').on('hide.bs.modal', function (e) {
+                registerForm.clear()
+            })
+        })
     </script>
 {{/section}}
 
