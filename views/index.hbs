@@ -1,7 +1,9 @@
 {{#section  'head'}}
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 {{/section}}
+{{> register}}
+{{> login-form}}
+{{> video}}
 <section id="intro" class="container-fluid section-hero hero-solar">
     <div class="section-overlay gradient-overlay">
         <div class="jumbotron bg-clear">
@@ -342,6 +344,7 @@
 </section>
 {{#section 'scripts'}}
     <script src="/javascripts/app.bundle.min.js"></script>
+    <script type="application/javascript" src="/javascripts/login.js"></script>
     <script>
         Vue.component('subscribe-form', {
             template: '<form id="subscribe-form" class="" method="post" action="/subscribe"><input type="hidden" v-model="csrfToken"><div class="input-group input-group-lg input-group-sm"><input type="email" class="form-control" placeholder="Enter your e-mail" aria-label="Enter your e-mail" v-model="email"><span class="input-group-btn"><button class="btn btn-primary" type="button" @click="onSubscribe">Subscribe</button></span></div></form>',
@@ -419,68 +422,17 @@
                     }).done(function (data) {
                         if (data.success) {
                             $('#signup-alert').addClass('alert-success').children('.message').text('Account created successfully, please check your email to confirm your account')
-
                         } else {
-                            $('#signup-alert').addClass('alert-danger').children('.message').text('data.message')
+                            $('#signup-alert').addClass('alert-danger').children('.message').text(data.message)
                         }
                     }).fail(function (e) {
-                        $('#signup-alert').removeClass('invisible').addClass('text-danger').text('An error occured')
+                        $('#signup-alert').removeClass('invisible').addClass('text-danger').text('An error occurred')
                     }).always(function () {
                         setTimeout(function () {
 //                            $('#alert-label').addClass('invisible').removeClass('text-danger').text('')
                             $('#signup-alert').removeClass('alert-danger').removeClass('alert-success').children('.message').text('')
 
                         }, 10000)
-                    })
-                    return false
-                },
-                validateEmail: function (email) {
-                    var regex = new RegExp(/.+\@.+\..+/)
-                    if ((!email) || !regex.test(email)) {
-                        return false
-                    }
-                    return true
-                }
-            }
-        })
-
-        var lf = new Vue({
-            el: '#login-form',
-            data: function () {
-                return {
-                    email: '',
-                    csrf: '{{csrfToken}}',
-                    pwd: ''
-                }
-            },
-            methods: {
-                onLogin: function (event) {
-                    var email = this.$data.email
-                    if (!this.validateEmail(email)) {
-                        $('#alert-label').removeClass('invisible').addClass('text-danger').text('Please enter a valid e=mail address.')
-                        return
-                    }
-                    console.log(this.$data)
-                    $.ajax({
-                        method: 'POST',
-                        url: '/api/v1/auth/login',
-                        data: this.$data,
-                        dataType: 'json'
-                    }).done(function (data) {
-                        window.location = '/platform'
-                        // $('#login-alert').removeClass('invisible')
-                        // if (data.success) {
-                        // $('#login-alert').addClass('alert-success').children('.message').text('Account created successfully, please check your email to confirm your account')
-                        //
-                        // } else {
-                        //    $('#login-alert').addClass('alert-danger').children('.message').text('data.message')
-                        // }
-                    }).fail(function (e) {
-                        $('#login-alert').removeClass('invisible').addClass('alert-danger').children('.message').text('data.message')
-                    }).always(function () {
-                        setTimeout(function () {
-                            $('#alert-label').addClass('invisible').removeClass('text-danger').text('')
-                        }, 5000)
                     })
                     return false
                 },

@@ -6,7 +6,14 @@ var _require = require('./model'),
     User = _require.User;
 
 module.exports = function (passport) {
-  passport.use(new LocalStrategy({ usernameField: 'email', passwordField: 'pwd' }, function (username, password, done) {
+  var localStrategy = new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'pwd'
+  }, function (username, password, done) {
+    // if (req.isAuthenticated()) {
+    //   return done(null, req.user)
+    // }
+
     User.findOne({ email: username }, function (err, user) {
       if (err) {
         return done(err);
@@ -23,15 +30,17 @@ module.exports = function (passport) {
         return done(null, user.toObject());
       });
     });
-  }));
+  });
+
   passport.serializeUser(function (user, done) {
     done(null, user._id);
   });
 
   passport.deserializeUser(function (id, done) {
     User.findById(id, function (err, user) {
-      done(err, user);
+      done(err, user.toObject());
     });
   });
+  passport.use(localStrategy);
 };
 //# sourceMappingURL=passport.js.map

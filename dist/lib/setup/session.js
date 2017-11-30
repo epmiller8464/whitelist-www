@@ -1,9 +1,12 @@
 'use strict';
 
 var expressSession = require('express-session');
-
+var uuid = require('uuid');
 module.exports = function (app) {
   var sess = {
+    genid: function genid(req) {
+      return uuid.v4(); // use UUIDs for session IDs
+    },
     secret: process.env.APP_SECRET,
     resave: false,
     saveUninitialized: true

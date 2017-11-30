@@ -30,4 +30,20 @@ test('emailVerificationToken', function (done) {
     done();
   });
 });
+
+test('verfify email', function (done) {
+  var id = '5a1e3459ac21c75d06e950ab';
+  confirmEmailToken(id).then(function (token) {
+    Email.sendConfirmation({ id: id, to: 'epmiller8464@gmail.com', name: 'Test User', token: token }).then(function (result) {
+      expect(result).not.toBeNull();
+      console.log(result);
+      done();
+    }).catch(function (e) {
+      expect(e).toBeNull();
+      done();
+    });
+  }).catch(function (err) {
+    done();
+  });
+});
 //# sourceMappingURL=email.test.js.map

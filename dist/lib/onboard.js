@@ -57,5 +57,9 @@ function onBoard(data, cb) {
 
 function confirmEmail() {}
 
+var Business = {
+  resendVerifyEmail: function resendVerifyEmail(to, context) {}
+};
+
 module.exports = { onBoard: onBoard, confirmEmail: confirmEmail };
 //# sourceMappingURL=onboard.js.map

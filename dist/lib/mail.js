@@ -43,7 +43,7 @@ var Email = function () {
 
       console.log('sending confirmation email');
       var substitutions = {
-        confirm_url: buildUrl('verify/:id/?token=' + token),
+        confirm_url: buildUrl('verify/' + id + '?token=' + token),
         name: name
       };
       return new Promise(function (resolve, reject) {

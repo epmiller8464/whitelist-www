@@ -29,54 +29,46 @@ var validate = [check('email').isEmail().withMessage('must be an email').trim().
 router.get('/', function (req, res, next) {
   res.render('index', {
     title: 'Swytch',
-    site_key: process.env.RECAPTCHA_KEY,
     VIDEO_URL: process.env.SWYTCH_VIDEO_URL,
     WP_URL: process.env.WHITEPAPER_URL,
     csrfToken: req.csrfToken()
   });
 });
-// router.post('/login', validate, authenticate, (req, res, next) => {
-//   next()
-// }, function (req, res, next) {
-//
-//   res.status(200).send()
-// })
-// Every validator method in the validator lib is available as a
-// method in the check() APIs.
-// You can customize per validator messages with .withMessage()
+router.get('/login', function (req, res, next) {
+  req.logOut();
+  req.user = null;
+  req.session = null;
+  res.locals = null;
+  res.clearCookie('SU_USER');
+  res.render('login', {
+    title: 'Swytch',
+    hideLogin: true,
+    csrfToken: req.csrfToken()
+  });
+});
 
-// Every sanitizer method in the validator lib is available as well!
-// ...or throw your own errors using validators created with .custom()
-
-// confirm_url: buildUrl(`verify/:id?token=${token}`),
-
-// router.post('/login', authenticate, function (req, res, next) {
-//   res.render('login', {
-//     title: 'Swytch',
-//     site_key: process.env.RECAPTCHA_KEY,
-//     csrfToken: req.csrfToken()
-//   })
-// })
-
-// router.get('/verify/:id', function (req, res, next) {
-//
-//   res.render('index', {
-//     title: 'Swytch',
-//     site_key: process.env.RECAPTCHA_KEY,
-//     csrfToken: req.csrfToken()
-//   })
-// })
+router.post('/logout', function (req, res, next) {
+  req.logOut();
+  req.user = null;
+  req.session = null;
+  res.locals = null;
+  res.clearCookie('SU_USER');
+  res.redirect('/');
+});
 
 router.get('/verify/:id', function (req, res, next) {
-
   var token = req.query.token;
 
   verifyToken(token).then(function (result) {
-    var updates = { verified: true };
+    // TODO: blacklist the token
+    User.findOneAndUpdate({ _id: result.sub }, { verified: true }, function (err, user) {
+      if (err || !user) {
+        return next(new Error('We couldn\'t process your request at this time.'));
+      }
 
-    /// TODO: blacklist the token
-    User.findByIdAndUpdate(req.params.id, updates, function (e, u) {
-      res.redirect('/?verified=true&login=true');
+      if (user) {
+        res.redirect('/platform/token-sale');
+      }
     });
   }).catch(function (err) {
     return next(err);
@@ -84,7 +76,6 @@ router.get('/verify/:id', function (req, res, next) {
 });
 
 router.get('/error', function (req, res, next) {
-
   res.render('error', { message: 'Noting to see here' });
 });
 

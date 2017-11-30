@@ -23,7 +23,7 @@ router.post('/', validate, function (req, res, next) {
     confirmEmailToken(doc.id)
     .then((token) => {
 
-      Email.sendConfirmation({to: req.body.email, name: `${doc.first_name} ${doc.last_name}`, token: token})
+      Email.sendConfirmation({id: doc.id, to: req.body.email, name: `${doc.first_name} ${doc.last_name}`, token: token})
       .then((result) => {
         return res.status(200).json({success: true, data: doc.toObject()})
 

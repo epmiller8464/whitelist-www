@@ -1,0 +1,90 @@
+{{#section  'head'}}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{{/section}}
+<div class="container-fluid">
+    <div class="row">
+        {{#ifCond step '===' 'verify-email'}}
+            {{> verify-email}}
+        {{/ifCond}}
+        {{#ifCond step '===' 'whitelist'}}
+            {{> identity-form}}
+        {{/ifCond}}
+    </div>
+</div>
+{{#section 'scripts'}}
+    <script src="/javascripts/app.bundle.min.js"></script>
+    <script>
+        var vue = new Vue({
+            el: '#identity-form',
+            data: function () {
+                return {
+                    country_code: '',
+                    csrf: '{{csrfToken}}',
+                    cryptoType: '',
+                    first_name: '{{user.first_name}}',
+                    last_name: '{{user.last_name}}',
+                    usCitizenAttestation: false,
+                    purchaseAmount: '',
+                    token: ''
+                }
+            },
+            methods: {
+                onWhitelist: function (event) {
+                    var email = this.$data.email
+                    if (!this.validateEmail(email)) {
+                        $('#alert-label').removeClass('invisible').addClass('text-danger').text('Please enter a valid e=mail address.')
+                        return
+                    }
+                    console.log(this.$data)
+                    $.ajax({
+                        method: 'POST',
+                        url: '/whitelist',
+                        data: this.$data,
+                        dataType: 'json'
+                    }).done(function (data) {
+                        // window.location = '/platform'
+                        // $('#login-alert').removeClass('invisible')
+                        // if (data.success) {
+                        // $('#login-alert').addClass('alert-success').children('.message').text('Account created successfully, please check your email to confirm your account')
+                        //
+                        // } else {
+                        //    $('#login-alert').addClass('alert-danger').children('.message').text('data.message')
+                        // }
+                    }).fail(function (e) {
+                        $('#login-alert').removeClass('invisible').addClass('alert-danger').children('.message').text('data.message')
+                    }).always(function () {
+                        setTimeout(function () {
+                            $('#alert-label').addClass('invisible').removeClass('text-danger').text('')
+                        }, 5000)
+                    })
+                    return false
+                },
+                validateForm: function () {
+                    // var regex = new RegExp(/.+\@.+\..+/)
+                    // if ((!email) || !regex.test(email)) {
+                    //     return false
+                    // }
+                    return true
+                },
+                recaptchaCallback: function (token) {
+                    // vm.token = null
+                    if (!this.validateForm()) {
+                        this.resetRecaptcha()
+                        return
+                    }
+                    this.token = token
+                    $('#submit').prop('disabled', false)
+                    $('#submit').removeClass('hide')
+                },
+                resetRecaptcha: function () {
+                    // $('#submit').prop('disabled', true)
+                    // $('#submit').addClass('hide')
+                    // vm.token = null
+                    grecaptcha.reset()
+                }
+            }
+        })
+
+        var recaptchaCallback = vue.recaptchaCallback
+    </script>
+{{/section}}

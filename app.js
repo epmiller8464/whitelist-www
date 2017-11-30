@@ -25,14 +25,14 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(logger('dev'))
 app.set('secret', process.env.APP_SECRET)
+app.use(cookieParser(process.env.APP_SECRET))
+
+
+session(app)
 require('./lib/passport')(passport)
 app.use(passport.initialize())
 app.use(passport.session())
 
-session(app)
-
-
-app.use(cookieParser(process.env.APP_SECRET))
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),

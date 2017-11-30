@@ -61,10 +61,6 @@ module.exports = function (app) {
   });
   var index = require('./routes/index');
   app.use('/', index);
-  // const platform = require('./routes/platform')
-  // app.use('/platform', authenticate, platform)
-  var tokensale = require('./routes/tokensale');
-  app.use('/token-sale', authenticate, tokensale);
 
   app.use(function (req, res, next) {
     var err = new Error('Not Found');

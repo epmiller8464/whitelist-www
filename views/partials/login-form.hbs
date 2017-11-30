@@ -1,0 +1,40 @@
+<div id="login-modal" class="modal fade">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content bg-dark-alpa">
+            <div class="modal-header">
+                <h5 class="modal-title">Swytch Login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container p-5 m-1">
+                    <form class="form-signin" id="login-form">
+                        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                        <h2 class="form-signin-heading">Please sign in</h2>
+                        <div class="form-group">
+                            <label>email:</label>
+                            <input type="email" v-model="email" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Password:</label>
+                            <input type="password" v-model="pwd" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="remember-me"> Remember me
+                                </label>
+                            </div>
+                        </div>
+                        <button type="button" @click="onLogin" class="btn btn-lg btn-primary btn-block">Submit
+                        </button>
+                    </form>
+                </div>
+                <div id="login-alert" class="alert">
+                    <label class="message"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

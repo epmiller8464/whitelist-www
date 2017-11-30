@@ -5,11 +5,11 @@ var moment = require('moment');
 module.exports = function (req, res, next) {
 
   function hasCookie(req) {
-    var authenticated = false;
+    var authenticated = '';
     if (req && req.cookies) {
-      authenticated = req.cookies['su_user'];
+      authenticated = req.cookies['SU_USER'];
       if (!authenticated) {
-        authenticated = req.signedCookies['su_user'];
+        authenticated = req.signedCookies['SU_USER'];
       }
     }
     return authenticated;
@@ -19,26 +19,44 @@ module.exports = function (req, res, next) {
     if (err) {
       return next(err);
     }
+
     // if the login cookie is not expried proceed
-    if (hasCookie(req)) {
+    if (req.user && hasCookie(req)) {
       return next();
     }
 
-    if (!user) {
-      // return res.status(404).json({error: 'Unauthorized'})
-      return next(new Error('Unauthorized'));
+    if (!user && !hasCookie(req)) {
+      return res.redirect('/login');
+      // let error = new Error()
+      // error.status = 400
+      // if (info || info.message) {
+      //   error.message = info.message
+      // } else {
+      //   error = new Error(info.message)
+      // }
+      // return next(error)
+      // return next(new Error('Unauthorized'))
     }
+
+    if (!user) {
+      user = { _id: hasCookie(req) };
+    }
+
     req.logIn(user, function (err) {
       if (err) {
         return next(err);
       }
-      res.cookie('su_user', Date.now(), {
-        httpOnly: true,
-        maxAge: moment().add(24, 'hours').unix(),
-        signed: true,
-        secure: process.env.NODE_ENV !== 'development',
-        path: '/'
-      });
+      // 1 hour expiration
+      if (!hasCookie(req)) {
+        var expires = 60 * 60 * 24 * 1000;
+        res.cookie('SU_USER', req.user._id, {
+          httpOnly: true,
+          expires: new Date(Date.now() + expires),
+          signed: true,
+          secure: process.env.NODE_ENV !== 'development',
+          path: '/'
+        });
+      }
       next();
     });
   })(req, res, next);

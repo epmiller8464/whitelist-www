@@ -9,10 +9,7 @@ const {Email} = require('../../lib/mail')
 const {accessToken} = require('../../lib/jsonwebtoken')
 const validate = [check('email').isEmail().withMessage('must be an email').trim().normalizeEmail(), sanitize('email').trim()]
 
-router.post('/login', validate, authenticate, (req, res, next) => {
-next()
-}, function (req, res, next) {
-
+router.post('/login', validate, authenticate, function (req, res, next) {
   res.status(200).json({token: ''})
 })
 

@@ -14,13 +14,12 @@ function configurePlatform () {
   platform.use(csurf({cookie: true}))
 
   let authenticate = require('./lib/authenticate')
-  platform.use('/platform', authenticate, function (req, res, next) {
+  platform.use('/platform', function (req, res, next) {
     res.locals._csrfToken = req.csrfToken()
     res.locals.user = {user: req.user}
-    console.log(util.inspect(req.session))
     next()
   })
-  platform.use('/platform', require('./routes/platform/index'))
+  platform.use('/platform', authenticate, require('./routes/platform/index'))
   platform.use('/platform', function (req, res, next) {
     var err = new Error('Not Found')
     err.status = 404

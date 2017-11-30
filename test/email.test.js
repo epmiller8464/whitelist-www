@@ -23,3 +23,21 @@ test('emailVerificationToken', done => {
     done()
   })
 })
+
+test('verfify email', done => {
+  let id = '5a1e3459ac21c75d06e950ab'
+  confirmEmailToken(id)
+  .then((token) => {
+    Email.sendConfirmation({id: id, to: 'epmiller8464@gmail.com', name: `Test User`, token: token})
+    .then((result) => {
+      expect(result).not.toBeNull()
+      console.log(result)
+      done()
+    }).catch((e) => {
+      expect(e).toBeNull()
+      done()
+    })
+  }).catch((err) => {
+    done()
+  })
+})

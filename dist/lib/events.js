@@ -10,8 +10,9 @@ var notify = void 0;
 module.exports = function () {
   if (!notify) {
     notify = notifier();
-    notify.subscribe('onboard', onBoard);
+    notify.subscribe('whitelist', onBoard);
     notify.subscribe('confirm:email', confirmEmail);
+    notify.subscribe('resend:email', confirmEmail);
   }
   return notify;
 };
