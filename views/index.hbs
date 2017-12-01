@@ -7,9 +7,9 @@
 <section id="intro" class="container-fluid section-hero hero-solar">
     <div class="section-overlay gradient-overlay">
         <div class="jumbotron bg-clear">
-            <div class="col-sm text-center">
+            <div class="col-sm text-center py-3">
                 <h1>
-                    SWYTCH IS A RENEWABLE ENERGY ACCELERATOR<br/>
+                    SWYTCH IS A RENEWABLE <br/> ENERGY ACCELERATOR<br/>
                 </h1>
                 <h4 class="text-muted">
                     Blockchain technology unlocking a sustainable and equitable energy future
@@ -22,7 +22,7 @@
                     <br/>
                     <b class="fa-2x text-bold">Learn About Swytch</b>
                 </div>
-                <div id="subscribe-section" class="col-sm py-5 m-auto text-center">
+                <div id="subscribe-section" class="col-sm col-md-4 col-sm-8 m-auto text-center py-3">
                     <subscribe-form></subscribe-form>
                     <b class="text-muted w-100">Don't worry we will never share or sell your information.</b>
                     <label id="alert-label" class="w-100 clearfix invisible"></label>
@@ -53,10 +53,9 @@
         </div>
     </div>
 </section>
-
 <section id="what" class="container-fluid section-hero">
     <div class="section-overlay bg-white text-dark">
-        <div class="container">
+        <div class="container px-3">
             <div class="row">
                 <div class="col-sm">
                     <h1>What is Swytch?</h1>
@@ -78,62 +77,53 @@
                         <video preload="auto" class="embed-responsive-item" src="{{VIDEO_URL}}" controls></video>
                     </div>
                 </div>
-
             </div>
             <div class="row">
                 <div class="col-sm">
                     <h1>How it works</h1>
                     <hr class="bg-dark"/>
+                    <p class="lead">The Swytch platform provides its users the means to generate Swytch currency
+                        through
+                        renewable energy production and the ability to do transactions using the currency through a
+                        wallet
+                        application.
+                    </p>
+                    <h5><b>The Swytch platform consists of the following elements:</b></h5>
+                    <p class="lead">
+                        <b class="">Mobile clients - </b> an app which acts as a currency wallet; displays Swytch
+                        your
+                        balance and
+                        allows you
+                        to spend and receive Swytch; shows energy production for the nodes linked to your solar
+                        arrays.
+                    </p>
+                    <p class="lead">
+                        <b>Nodes -</b> an IoT device which consists of a tracking device which measures energy
+                        production
+                        for your solar array; a storage device which holds a copy of the whole blockchain; a
+                        computing
+                        device which
+                        calculates Swytch reward amounts through an Oracle.
+                    </p>
+                    <p class="lead">
+                        A contribution to the network to ensure tamper-proof blocks validation through Scrypt
+                        Proof-of-work.
+                    </p>
                 </div>
-                <div class="row my-5">
-                    <div class="col-sm">
-                        <p class="lead">The Swytch platform provides its users the means to generate Swytch currency
-                            through
-                            renewable energy production and the ability to do transactions using the currency through a
-                            wallet
-                            application.
-                        </p>
-                        <h5><b>The Swytch platform consists of the following elements:</b></h5>
-                        <p class="lead">
-                            <b class="">Mobile clients - </b> an app which acts as a currency wallet; displays Swytch
-                            your
-                            balance and
-                            allows you
-                            to spend and receive Swytch; shows energy production for the nodes linked to your solar
-                            arrays.
-                        </p>
-                        <p class="lead">
-                            <b>Nodes -</b> an IoT device which consists of a tracking device which measures energy
-                            production
-                            for your solar array; a storage device which holds a copy of the whole blockchain; a
-                            computing
-                            device which
-                            calculates Swytch reward amounts through an Oracle.
-                        </p>
-                        <p class="lead">
-                            A contribution to the network to ensure tamper-proof blocks validation through Scrypt
-                            Proof-of-work.
-                        </p>
-                    </div>
-                    <div class="col-sm m-auto">
-                        <figure>
-                            <img class="card-img" src="/images/swytch-how-it-works.jpg">
-                        </figure>
-                    </div>
+                <div class="col-sm m-auto">
+                    <figure>
+                        <img class="card-img" src="/images/swytch-how-it-works.jpg">
+                    </figure>
                 </div>
             </div>
-
         </div>
+    </div>
 </section>
 <section id="how-it-works" class="container-fluid section-hero">
     <div class="section-overlay gradient-overlay-360">
-        <div class="container">
+        <div class="container  px-3">
+            <h1 class="text-center mb-5">Why Swytch?</h1>
             <div class="row">
-                <div class="col-sm text-center">
-                    <h1 class="page-header">Why Swytch?</h1>
-                </div>
-            </div>
-            <div class="row my-5 py-5">
                 <div class="col-sm">
                     <h2 class="">Our Goal</h2>
                     <hr class="border-dark"/>
@@ -203,8 +193,9 @@
     <div class="section-overlay dark-overlay">
         <div class="container text-center">
             <div class="p-4 border border-dark">
-                <h2 class="">LET’S TAKE OUR ENERGY FUTURE INTO OUR OWN HANDS AND ACCELERATE THE SWYTCH TO
-                    RENEWABLES.</h2>
+                <h2>
+                    LET’S TAKE OUR ENERGY FUTURE INTO OUR OWN HANDS AND ACCELERATE THE SWYTCH TO RENEWABLES.
+                </h2>
             </div>
             <a onclick="window.open('{{WP_URL}}')"
                class="btn btn-dark mt-4"> Download Whitepaper</a>
@@ -213,8 +204,8 @@
 </section>
 <section id="team" class="section-hero hero-code">
     <div class="section-overlay gradient-overlay">
-        <div class="container m-auto">
-            <h1 class="display-4">Meet Our Team</h1>
+        <div class="container px-3">
+            <h1>Meet Our Team</h1>
             <hr class="bg-light"/>
             <div class="row">
                 {{#each team}}
@@ -237,8 +228,8 @@
 </section>
 <section id="advisors" class="section-hero">
     <div class="section-overlay gradient-overlay-360">
-        <div class="container">
-            <h1 class="display-4">The Advisory Board</h1>
+        <div class="container px-3">
+            <h1>The Advisory Board</h1>
             <hr class="bg-light"/>
             <div class="row">
                 {{#each advisors}}
