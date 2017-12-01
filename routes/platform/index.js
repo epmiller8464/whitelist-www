@@ -18,33 +18,37 @@ router.get('/', function (req, res, next) {
 
 router.get('/token-sale', function (req, res, next) {
 
-  let step = 'verify-email'
-  if (req.user.verified) {
-    step = 'whitelist'
-  }
-  if (req.user.verified && req.user.whitelisted) {
-    step = 'complete'
-  }
+  User.findById(req.user._id, (err, user) => {
 
-  let countries = require('../../lib/countries')()
-  let user = {
-    first_name: req.user.first_name,
-    last_name: req.user.last_name,
-    email: req.user.email,
-    verified: req.user.verified,
-    whitelisted: req.user.whitelisted,
-    id: req.user._id
-  }
-  res.render('platform/token_sale', {
-    title: 'Swytch Pre-Sale Whitelist Registration',
-    user: user,
-    countries: countries,
-    step: step,
-    contributionAmounts: loadContributionAmounts(),
-    site_key: process.env.RECAPTCHA_KEY,
-    csrfToken: req.csrfToken()
+    let step = 'verify-email'
+    if (user.verified) {
+      step = 'whitelist'
+    }
+    if (user.verified && user.whitelisted) {
+      step = 'complete'
+    }
+
+    let countries = require('../../lib/countries')()
+    let data = {
+      first_name: user.first_name,
+      last_name: user.last_name,
+      email: user.email,
+      verified: user.verified,
+      whitelisted: user.whitelisted,
+      id: user._id
+    }
+    res.render('platform/token_sale', {
+      title: 'Swytch Pre-Sale Whitelist Registration',
+      user: data,
+      countries: countries,
+      step: step,
+      contributionAmounts: loadContributionAmounts(),
+      site_key: process.env.RECAPTCHA_KEY,
+      csrfToken: req.csrfToken()
+    })
   })
 })
+
 router.post('/token-sale', function (req, res, next) {
 
   var body = {response: req.body['g-recaptcha-response'], remoteip: req.ip}
@@ -72,7 +76,7 @@ router.post('/token-sale', function (req, res, next) {
 
       User.findOneAndUpdate({_id: req.user._id}, {whitelisted: true}, {new: true}, (error, doc) => {
 
-        req.user = req.session.me = doc.toObject()
+        // req.user = req.session.me = doc.toObject()
         return res.status(200).json({success: true})
       })
     })

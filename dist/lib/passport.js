@@ -28,7 +28,10 @@ module.exports = function (passport) {
         if (err || !matches) {
           return done(new Error('Incorrect password.'), false, { message: 'Incorrect password.' });
         }
-        return done(null, user.toObject());
+        req.session.regenerate(function (err) {
+          // will have a new session here
+          return done(null, user.toObject());
+        });
       });
     });
   });

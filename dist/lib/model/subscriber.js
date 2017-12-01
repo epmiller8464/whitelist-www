@@ -26,7 +26,7 @@ module.exports = function () {
     unsubscribeFrom: [String],
     unsubscribeAll: { type: Boolean, required: true, default: false },
     meta: { type: mongoose.Schema.Types.Object }
-  }, { collection: 'subscriber' });
+  }, { timestamps: { created_at: 'created_at', updated_at: 'updated_at' } }, { collection: 'subscriber' });
   schema.index({ email: 1 });
   var Model = void 0;
   try {
