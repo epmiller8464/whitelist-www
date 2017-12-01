@@ -8,12 +8,15 @@ const {Subscriber, User} = require('../lib/model')
 const {Email} = require('../lib/mail')
 const {verifyToken} = require('../lib/jsonwebtoken')
 const validate = [check('email').isEmail().withMessage('must be an email').trim().normalizeEmail(), sanitize('email').trim()]
-
+const org = require('../lib/data/team')
 router.get('/', function (req, res, next) {
+
   res.render('index', {
     title: 'Swytch',
     VIDEO_URL: process.env.SWYTCH_VIDEO_URL,
     WP_URL: process.env.WHITEPAPER_URL,
+    team: org.team,
+    advisors: org.advisors,
     csrfToken: req.csrfToken()
   })
 })

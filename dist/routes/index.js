@@ -25,12 +25,15 @@ var _require5 = require('../lib/jsonwebtoken'),
     verifyToken = _require5.verifyToken;
 
 var validate = [check('email').isEmail().withMessage('must be an email').trim().normalizeEmail(), sanitize('email').trim()];
-
+var org = require('../lib/data/team');
 router.get('/', function (req, res, next) {
+
   res.render('index', {
     title: 'Swytch',
     VIDEO_URL: process.env.SWYTCH_VIDEO_URL,
     WP_URL: process.env.WHITEPAPER_URL,
+    team: org.team,
+    advisors: org.advisors,
     csrfToken: req.csrfToken()
   });
 });

@@ -216,57 +216,21 @@
         <div class="container m-auto">
             <h1 class="display-4">Meet Our Team</h1>
             <hr class="bg-light"/>
-            <div class="card-deck">
-                <div class="card bg-clear">
-                    <img class="card-img-top rounded-circle" src="/images/team/john.jpg" alt="evan">
-                    <div class="card-body">
-                        <h4 class="card-title">JOHN CLIPPINGER</h4>
-                        <p class="card-text">Founder, MIT Media Lab</p>
-                        <a href="#" class="btn btn-link fa-2x m-auto"><span class="fa fa-linkedin-square"></span></a>
-                    </div>
-                </div>
-                <div class="card bg-clear">
-                    <img class="card-img-top rounded-circle" src="/images/team/redpath.jpg" alt="evan">
-                    <div class="card-body">
-                        <h4 class="card-title">JOHN REDPATH</h4>
-                        <p class="card-text">Founder, CEO of Trailstone Group</p>
-                        <a href="#" class="btn btn-link fa-2x m-auto"><span class="fa fa-linkedin-square"></span></a>
-                    </div>
-                </div>
-                <div class="card bg-clear">
-                    <img class="card-img-top rounded-circle" src="/images/team/caron.jpg" alt="evan">
-                    <div class="card-body">
-                        <h4 class="card-title">EVAN CARON</h4>
-                        <p class="card-text">Founder and CEO<br/>Renewable energy expert/entrepreneur</p>
-                        <a href="#" class="btn btn-link fa-2x m-auto"><span class="fa fa-linkedin-square"></span></a>
-                    </div>
-                </div>
-                <div class="card bg-clear">
-                    <img class="card-img-top rounded-circle" src="/images/team/young.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">YOUNGSOOK PARK</h4>
-                        <p class="card-text">Director of Business Development, Chair of Millenium Project Korea</p>
-                        <a href="#" class="btn btn-link fa-2x m-auto"><span class="fa fa-linkedin-square"></span></a>
-                    </div>
-                </div>
-            </div>
             <div class="row">
-                <div class="card w-25 bg-clear ml-2 mr-2" style="width: 25% !important;">
-                    <img class="card-img-top rounded-circle" src="/images/team/Pearsons.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">ANDREW PEARSONS</h4>
-                        <p class="card-text">Director of Operations, Strategy and operations expert</p>
-                        <a href="#" class="btn btn-link fa-2x m-auto"><span class="fa fa-linkedin-square"></span></a>
+                {{#each team}}
+                    <div class="col-sm-3 col-sm">
+                        <div class="card bg-clear p-3 p-sm-3">
+                            <img class="card-img-top rounded-circle" src="{{this.img_path}}" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">{{this.name}}</h4>
+                                <p class="card-text">{{this.title}}</p>
+                                <a href="{{this.linked_in}}" class="btn btn-link fa-2x m-auto">
+                                    <span class="fa fa-linkedin-square"></span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="card w-25 bg-clear ml-2 mr-2" style="width: 25% !important;">
-                    <img class="card-img-top rounded-circle" src="/images/team/miller.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">ERIC MILLER</h4>
-                        <p class="card-text">Lead Engineer, Software Engineer and Systems Architect</p>
-                        <a href="#" class="btn btn-link fa-2x m-auto"><span class="fa fa-linkedin-square"></span></a>
-                    </div>
-                </div>
+                {{/each}}
             </div>
         </div>
     </div>
@@ -276,73 +240,21 @@
         <div class="container">
             <h1 class="display-4">The Advisory Board</h1>
             <hr class="bg-light"/>
-            <div class="row card-group">
-                <div class="col-sm">
-                    <div class="card bg-clear">
-                        <img class="card-img-top rounded-circle" src="/images/team/Larson.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title">Kent Larson</h4>
-                            <p class="card-text"></p>
-                            <a href="#" class="btn btn-link fa-2x m-auto"><span
-                                    class="fa fa-linkedin-square"></span></a>
+            <div class="row">
+                {{#each advisors}}
+                    <div class="col-sm-3 col-sm">
+                        <div class="card bg-clear p-3 p-sm-3">
+                            <img class="card-img-top rounded-circle" src="{{this.img_path}}" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">{{this.name}}</h4>
+                                <p class="card-text">{{this.title}}</p>
+                                <a href="{{this.linked_in}}" class="btn btn-link fa-2x m-auto">
+                                    <span class="fa fa-linkedin-square"></span>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card bg-clear">
-                        <img class="card-img-top rounded-circle" src="/images/team/Hardin.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title">Brad Hardin</h4>
-                            <p class="card-text">CTO, Black & Veatch</p>
-                            <a href="#" class="btn btn-link fa-2x m-auto"><span
-                                    class="fa fa-linkedin-square"></span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card bg-clear">
-                        <img class="card-img-top rounded-circle" src="/images/team/seba.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title">Tony Seba</h4>
-                            <p class="card-text">Stanford University – Clean energy expert</p>
-                            <a href="#" class="btn btn-link fa-2x m-auto"><span
-                                    class="fa fa-linkedin-square"></span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card bg-clear">
-                    <img class="card-img-top rounded-circle" src="/images/team/Hirsch.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">PETER HIRSHBERG</h4>
-                        <p class="card-text">Principal, Maker City Project</p>
-                        <a href="#" class="btn btn-link fa-2x m-auto"><span
-                                class="fa fa-linkedin-square"></span></a>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card bg-clear">
-                        <img class="card-img-top rounded-circle" src="/images/team/hardjono.jpg"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title">Thomas Hardjono</h4>
-                            <p class="card-text">MIT - Technical Director of MIT Internet Trust Consortium</p>
-                            <a href="#" class="btn btn-link fa-2x m-auto"><span
-                                    class="fa fa-linkedin-square"></span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card bg-clear">
-                        <img class="card-img-top rounded-circle" src="/images/team/lefabvre.jpg"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title">Curt Lefabvre</h4>
-                            <p class="card-text">CEO, nDimensional</p>
-                            <a href="#" class="btn btn-link fa-2x m-auto"><span
-                                    class="fa fa-linkedin-square"></span></a>
-                        </div>
-                    </div>
-                </div>
+                {{/each}}
             </div>
         </div>
     </div>
