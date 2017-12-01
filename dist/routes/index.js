@@ -34,6 +34,7 @@ router.get('/', function (req, res, next) {
     csrfToken: req.csrfToken()
   });
 });
+
 router.get('/login', function (req, res, next) {
   req.logOut();
   req.user = null;
@@ -54,6 +55,15 @@ router.post('/logout', function (req, res, next) {
   res.locals = null;
   res.clearCookie('SU_USER');
   res.redirect('/');
+});
+
+router.get('/sign-up', function (req, res, next) {
+
+  res.render('sign-up', {
+    title: 'Swytch',
+    hideSignup: true,
+    csrfToken: req.csrfToken()
+  });
 });
 
 router.get('/verify/:id', function (req, res, next) {

@@ -8,36 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="container p-5 m-1">
-                    <form id="signup-form">
-                        <input type="hidden" v-model="csrf" value="">
-                        <div class="form-group">
-                            <label>First Name:</label>
-                            <input type="text" v-model="first_name" class="form-control" minlength="2"/>
-                        </div>
-                        <div class="form-group">
-                            <label>Last Name:</label>
-                            <input type="text" v-model="last_name" class="form-control" minlength="2"/>
-                        </div>
-                        <div class="form-group">
-                            <label>email:</label>
-                            <input type="email" v-model="email" class="form-control"/>
-                        </div>
-                        <div class="form-group">
-                            <label>Password:</label>
-                            <input type="password" v-model="pwd" minlength="6" class="form-control"/>
-                        </div>
-                        <div class="form-group">
-                            <label>Confirm Password:</label>
-                            <input type="password" v-model="confirm_pwd" minlength="6" class="form-control"/>
-                        </div>
-                        <button type="button" @click="onSubmit" class="btn btn-lg btn-primary btn-block">Submit
-                        </button>
-                    </form>
-                    <div id="signup-alert" class="alert">
-                        <label class="message"></label>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
