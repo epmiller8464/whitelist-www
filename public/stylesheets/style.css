@@ -34,6 +34,9 @@
   border-color: #fff;
   color: #fff; }
 
+html {
+  font-size: 1rem; }
+
 body {
   font-family: 'Roboto', sans-serif !important;
   font-size: 14px;
@@ -92,6 +95,7 @@ select,
 .section-hero {
   width: 100vw;
   height: 100%;
+  margin: 0 auto;
   background-size: cover;
   background-position: 50% 50%;
   z-index: 0; }

@@ -143,7 +143,7 @@ var registerForm = new Vue({
     onSubmit: function onSubmit(event) {
       var email = this.$data.email;
       if (!this.validateEmail(email)) {
-        $('#alert-label').removeClass('invisible').addClass('text-danger').text('Please enter a valid e=mail address.');
+        $('#alert-label').removeClass('invisible').addClass('text-danger').text('Please enter a valid e-mail address.');
         return;
       }
 
