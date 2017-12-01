@@ -8,11 +8,12 @@ var _require = require('./model'),
 module.exports = function (passport) {
   var localStrategy = new LocalStrategy({
     usernameField: 'email',
-    passwordField: 'pwd'
-  }, function (username, password, done) {
-    // if (req.isAuthenticated()) {
-    //   return done(null, req.user)
-    // }
+    passwordField: 'pwd',
+    passReqToCallback: true
+  }, function (req, username, password, done) {
+    if (req.isAuthenticated()) {
+      return done(null, req.user);
+    }
 
     User.findOne({ email: username }, function (err, user) {
       if (err) {

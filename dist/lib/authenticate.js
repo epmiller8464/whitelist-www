@@ -2,6 +2,10 @@
 
 var passport = require('passport');
 var moment = require('moment');
+
+var _require = require('./model/index'),
+    User = _require.User;
+
 module.exports = function (req, res, next) {
 
   function hasCookie(req) {

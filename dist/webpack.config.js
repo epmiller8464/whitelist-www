@@ -16,7 +16,9 @@ module.exports = {
       }
     }]
   },
-  plugins: [new webpack.optimize.UglifyJsPlugin()],
+  plugins: [
+    // new webpack.optimize.UglifyJsPlugin()
+  ],
   stats: {
     colors: true
   },

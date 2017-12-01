@@ -12,7 +12,7 @@ function configurePlatform() {
   platform.set('trust proxy', 1);
   platform.use(cors());
   viewConfig(platform, 'inverse');
-  platform.use(csurf({ cookie: true }));
+  platform.use(csurf());
 
   var authenticate = require('./lib/authenticate');
   platform.use('/platform', function (req, res, next) {

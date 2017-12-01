@@ -2,7 +2,7 @@
 
 var express = require('express');
 var router = express.Router();
-var authenticate = require('../../lib/authenticate');
+// const authenticate = require('../../lib/authenticate')
 
 var _require = require('express-validator/check'),
     check = _require.check;
@@ -21,19 +21,21 @@ var _require3 = require('../../lib/jsonwebtoken'),
 var _require4 = require('../../lib/mail'),
     Email = _require4.Email;
 
+var _require5 = require('../../lib/model/index'),
+    Whitelist = _require5.Whitelist,
+    User = _require5.User;
+
 router.get('/', function (req, res, next) {
-  // if (!req.user.verified) {
   return res.redirect('/platform/token-sale');
-  // }
-  // res.render('platform', {title: 'Swytch Platform', csrfToken: req.csrfToken()})
 });
 
 router.get('/token-sale', function (req, res, next) {
 
   var step = 'verify-email';
-  if (req.user.verified && !req.user.whitelisted) {
+  if (req.user.verified) {
     step = 'whitelist';
-  } else if (req.user.verified && req.user.whitelisted) {
+  }
+  if (req.user.verified && req.user.whitelisted) {
     step = 'complete';
   }
 
@@ -56,11 +58,39 @@ router.get('/token-sale', function (req, res, next) {
     csrfToken: req.csrfToken()
   });
 });
+router.post('/token-sale', function (req, res, next) {
 
-router.get('/error', function (req, res, next) {
-  res.render('error', { message: 'Opps we\'ll fix that...' });
+  var body = { response: req.body['g-recaptcha-response'], remoteip: req.ip };
+
+  if (!body.response) {
+    return res.status(400).json({ error: true, message: 'Invalid parameters' });
+  }
+
+  validateSubmitter(body.response, body.remoteip, function (err, result) {
+    if (err || !result.success) {
+      return res.status(400).json({ error: true, message: 'Validation failed.' });
+    }
+    var whitelist = new Whitelist({
+      ip: req.ip,
+      country_code: req.body.country_code,
+      crypto_type: req.body.crypto_type,
+      purchase_amount: req.body.purchase_amount,
+      timezone: req.body.timezone,
+      us_citizen: req.body.us_citizen,
+      can_participate: !req.body.us_citizen,
+      owner_id: req.user._id,
+      verified: true
+    });
+    whitelist.save(function (err) {
+
+      User.findOneAndUpdate({ _id: req.user._id }, { whitelisted: true }, { new: true }, function (error, doc) {
+
+        req.user = req.session.me = doc.toObject();
+        return res.status(200).json({ success: true });
+      });
+    });
+  });
 });
-
 router.get('/resend/verify-email', function (req, res, next) {
 
   var id = req.query.id;
@@ -86,39 +116,6 @@ router.get('/resend/verify-email', function (req, res, next) {
   });
 });
 
-router.post('/whitelist', function (req, res, next) {
-
-  var body = { response: req.body['g-recaptcha-response'], remoteip: req.ip };
-  var email = req.body.email;
-
-  if (!body.response || !email) {
-    return res.status(400).json({ error: 'Invalid parameters' });
-  }
-
-  validateSubmitter(body.response, body.remoteip, function (err, result) {
-    if (err || !result.success) {
-      return res.status(400).json({ error: 'Validation failed.' });
-    }
-
-    notifier('whitelist', {
-      email: req.body.email,
-      first_name: req.body.first_name,
-      last_name: req.body.last_name,
-      ip: req.ip,
-      cryptoType: req.body.cryptoType,
-      purchaseAmount: req.body.purchaseAmount,
-      timeZone: {
-        ts: req.body.timeZone.ts,
-        zoneName: req.body.timeZone.zoneName,
-        offset: req.body.timeZone.offset
-      },
-      usCitizenAttestation: req.body.usCitizenAttestation,
-      canParticipate: !req.body.usCitizenAttestation
-    });
-    return res.status(200).json({ success: true });
-  });
-});
-
 function validateSubmitter(recaptcha, ip, cb) {
   var url = 'https://www.google.com/recaptcha/api/siteverify?secret= ' + process.env.RECAPTCHA_SECRET + '&response=' + recaptcha + '&remoteip=' + ip;
   var request = {
@@ -132,13 +129,7 @@ function validateSubmitter(recaptcha, ip, cb) {
 }
 
 function loadContributionAmounts() {
-  return [{ value: null, display: 'USD > 100' }, { value: '100-1000', display: 'USD 100 - 1,000' }, {
-    value: '1000-5000',
-    display: 'USD 1,000 - 5,000'
-  }, { value: '5000-10000', display: 'USD 5,000 - 10,000' }, {
-    value: '10000-50000',
-    display: 'USD 10,000 - 50,000'
-  }, { value: '50000-100000', display: 'USD 50,000 - 100,000' }, { value: '100000-MAX', display: 'USD +100,000' }];
+  return [{ value: '0-100', display: 'USD > 100' }, { value: '100-1000', display: 'USD 100 - 1,000' }, { value: '1000-5000', display: 'USD 1,000 - 5,000' }, { value: '5000-10000', display: 'USD 5,000 - 10,000' }, { value: '10000-50000', display: 'USD 10,000 - 50,000' }, { value: '50000-100000', display: 'USD 50,000 - 100,000' }, { value: '100000-MAX', display: 'USD +100,000' }];
 }
 
 module.exports = router;

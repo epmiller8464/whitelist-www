@@ -15,7 +15,8 @@ router.post('/login', validate, authenticate, (err, req, res, next) => {
   }
   return next()
 }, function (req, res, next) {
-  res.status(200).json({})
+  // todo: add jwt response
+  res.status(200).json({success: true})
 })
 
 module.exports = router

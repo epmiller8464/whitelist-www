@@ -56,7 +56,7 @@ module.exports = function () {
     ip: [String],
     whitelisted: Boolean,
     country_code: String,
-    role: { type: String, required: true, enum: ['guest', 'user', 'admin'], default: 'guest' },
+    role: { type: String, required: true, enum: ['user', 'super-user', 'admin'], default: 'user' },
     contact: { type: mongoose.Schema.Types.Object },
     history: [mongoose.Schema.Types.Object],
     meta: { type: mongoose.Schema.Types.Object }

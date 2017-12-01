@@ -394,65 +394,7 @@
         var app2 = new Vue({
             el: '#subscribe-section',
         })
-        var registerForm = new Vue({
-            el: '#signup-form',
-            data: function () {
-                return {
-                    email: '',
-                    csrf: '{{csrfToken}}',
-                    first_name: '',
-                    last_name: '',
-                    confirm_pwd: '',
-                    pwd: ''
-                }
-            },
-            methods: {
-                onSubmit: function (event) {
-                    var email = this.$data.email
-                    if (!this.validateEmail(email)) {
-                        $('#alert-label').removeClass('invisible').addClass('text-danger').text('Please enter a valid e=mail address.')
-                        return
-                    }
-//                    var csrfToken = this.$data.csrfToken
-                    $.ajax({
-                        method: 'POST',
-                        url: '/api/v1/users/',
-                        data: this.$data,
-                        dataType: 'json'
-                    }).done(function (data) {
-                        if (data.success) {
-                            $('#signup-alert').addClass('alert-success').children('.message').text('Account created successfully, please check your email to confirm your account')
-                        } else {
-                            $('#signup-alert').addClass('alert-danger').children('.message').text(data.message)
-                        }
-                    }).fail(function (e) {
-                        $('#signup-alert').removeClass('invisible').addClass('text-danger').text('An error occurred')
-                    }).always(function () {
-                        setTimeout(function () {
-//                            $('#alert-label').addClass('invisible').removeClass('text-danger').text('')
-                            $('#signup-alert').removeClass('alert-danger').removeClass('alert-success').children('.message').text('')
 
-                        }, 10000)
-                    })
-                    return false
-                },
-                validateEmail: function (email) {
-                    var regex = new RegExp(/.+\@.+\..+/)
-                    if ((!email) || !regex.test(email)) {
-                        return false
-                    }
-                    return true
-                },
-                clear: function () {
-                    this.$data.email = ''
-                    this.$data.csrf = ''
-                    this.$data.first_name = ''
-                    this.$data.last_name = ''
-                    this.$data.confirm_pwd = ''
-                    this.$data.pwd = ''
-                }
-            }
-        })
 
         $(document).ready(function () {
             $('#swytch-video-modal').on('hide.bs.modal', function (e) {

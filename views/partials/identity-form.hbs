@@ -41,10 +41,10 @@
             <label>Full Name:</label>
             <div class="flextable">
                 <div class="flextable-item pr-1">
-                    <input type="text" v-model="first_name" class="form-control" value="{{user.first_name}}"/>
+                    <input type="text" v-model.trim="first_name" class="form-control" value="{{user.first_name}}"/>
                 </div>
                 <div class="flextable-item pr-1">
-                    <input type="text" v-model="last_name" class="form-control" value="{{user.last_name}}"/>
+                    <input type="text" v-model.trim="last_name" class="form-control" value="{{user.last_name}}"/>
                 </div>
             </div>
         </div>
@@ -58,11 +58,11 @@
             </select>
         </div>
         <div class="form-group text-left">
-            <label for="purchaseAmount">
+            <label for="purchase_amount">
                 <small>Please indicate your contribution amount (in USD).<span class="text-danger">&nbsp;*</span>
                 </small>
             </label>
-            <select class="form-control" v-model="purchaseAmount">
+            <select class="form-control" v-model="purchase_amount">
                 <option value="" disabled>Select an amount</option>
                 {{#each contributionAmounts}}
                     <option value="{{this.value}}">{{this.display}}</option>
@@ -77,20 +77,20 @@
             <div class="form-group">
                 <div class="radio-inline">
                     <label>
-                        <input type="radio" v-model="cryptoType" id="optionsRadios2" value="ETH">&nbsp;ETH
+                        <input type="radio" v-model="crypto_type" value="ETH">&nbsp;ETH
                     </label>
                 </div>
                 <div class="radio-inline">
                     <label>
-                        <input type="radio" v-model="cryptoType" id="optionsRadios2" value="BTC">&nbsp;BTC
+                        <input type="radio" v-model="crypto_type" value="BTC">&nbsp;BTC
                     </label>
                 </div>
             </div>
         </div>
         <div class="form-group">
             <div class="checkbox">
-                <label for="usCitizenAttestation">
-                    <input v-model="usCitizenAttestation" type="checkbox">&nbsp;I am a us citizen
+                <label for="us_citizen">
+                    <input v-model="us_citizen" type="checkbox">&nbsp;I am a us citizen
                 </label>
             </div>
         </div>
@@ -100,86 +100,28 @@
             </div>
         </div>
         <div class="my-4">
-            <button disabled type="button" @click="onWhitelist" class="btn btn-lg btn-primary btn-block">
+            <button id="whitelistBtn" type="button" @click="onWhitelist"
+                    class="btn btn-lg btn-primary btn-block">
                 Whitelist
             </button>
         </div>
     </form>
+    <div id="whitelist-alert" class="alert">
+        <label class="message"></label>
+    </div>
 </div>
 {{#section 'scripts'}}
     <script src="/javascripts/app.bundle.min.js"></script>
     <script>
-        var vue = new Vue({
-            el: '#identity-form',
-            data: function () {
-                return {
-                    country_code: '',
-                    csrf: '{{csrfToken}}',
-                    cryptoType: '',
-                    first_name: '{{user.first_name}}',
-                    last_name: '{{user.last_name}}',
-                    usCitizenAttestation: false,
-                    purchaseAmount: '',
-                    token: ''
-                }
-            },
-            methods: {
-                onWhitelist: function (event) {
-                    var email = this.$data.email
-                    if (!this.validateEmail(email)) {
-                        $('#alert-label').removeClass('invisible').addClass('text-danger').text('Please enter a valid e=mail address.')
-                        return
-                    }
-                    console.log(this.$data)
-                    $.ajax({
-                        method: 'POST',
-                        url: '/whitelist',
-                        data: this.$data,
-                        dataType: 'json'
-                    }).done(function (data) {
-                        // window.location = '/platform'
-                        // $('#login-alert').removeClass('invisible')
-                        // if (data.success) {
-                        // $('#login-alert').addClass('alert-success').children('.message').text('Account created successfully, please check your email to confirm your account')
-                        //
-                        // } else {
-                        //    $('#login-alert').addClass('alert-danger').children('.message').text('data.message')
-                        // }
-                    }).fail(function (e) {
-                        $('#login-alert').removeClass('invisible').addClass('alert-danger').children('.message').text('data.message')
-                    }).always(function () {
-                        setTimeout(function () {
-                            $('#alert-label').addClass('invisible').removeClass('text-danger').text('')
-                        }, 5000)
-                    })
-                    return false
-                },
-                validateForm: function () {
-                    // var regex = new RegExp(/.+\@.+\..+/)
-                    // if ((!email) || !regex.test(email)) {
-                    //     return false
-                    // }
-                    return true
-                },
-                recaptchaCallback: function (token) {
-                    // vm.token = null
-                    if (!this.validateForm()) {
-                        this.resetRecaptcha()
-                        return
-                    }
-                    this.token = token
-                    $('#submit').prop('disabled', false)
-                    $('#submit').removeClass('hide')
-                },
-                resetRecaptcha: function () {
-                    // $('#submit').prop('disabled', true)
-                    // $('#submit').addClass('hide')
-                    // vm.token = null
-                    grecaptcha.reset()
-                }
-            }
+        var data = {
+            first_name: '{{user.first_name}}',
+            last_name: '{{user.last_name}}'
+        }
+        $(document).ready(function () {
+            VueApp.$data.first_name = data.first_name
+            VueApp.$data.last_name = data.last_name
+            VueApp.$data.csrf = '{{csrfToken}}'
         })
-
-        var recaptchaCallback = vue.recaptchaCallback
+        var recaptchaCallback = VueApp.recaptchaCallback
     </script>
 {{/section}}
