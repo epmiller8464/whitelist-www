@@ -169,4 +169,7 @@ select,
 .partner-logo {
   height: 50px; }
 
+.partner-logo svg {
+  fill: #fff; }
+
 /*# sourceMappingURL=style.css.map */
