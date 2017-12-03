@@ -37,7 +37,7 @@ module.exports = {
     title: 'Lead Engineer',
     subtitle: 'Software Engineer and Systems Architect',
     img_path: '/images/team/miller.jpg',
-    linked_in: ''
+    linked_in: 'https://www.linkedin.com/in/eric-miller-5948aa12/'
   }],
   advisors: [{
     name: 'Kent Larson',
@@ -80,14 +80,14 @@ module.exports = {
     linked_in: 'https://www.linkedin.com/in/curt-lefebvre/'
   }, {
     name: 'Samuel Visscher',
-    title: 'Crypto Assets Group',
-    subtitle: '',
+    title: 'Founder, Fish & Bits B.V.',
+    subtitle: 'Blockchain & Software Engineer',
     img_path: '/images/team/visscher.jpg',
     linked_in: 'https://www.linkedin.com/in/samuelvisscher/'
   }, {
     name: 'Robert Kastelein',
-    title: 'Blockchain News',
-    subtitle: '',
+    title: 'Founder, Blockchain News',
+    subtitle: 'Writer, Publisher, & Entrepreneur',
     img_path: '/images/team/kastelein.jpg',
     linked_in: 'https://www.linkedin.com/in/expathos/'
   }]
