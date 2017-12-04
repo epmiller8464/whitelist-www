@@ -1,8 +1,5 @@
 @import url(/bootstrap/dist/css/bootstrap.css);
 @import url(font-awesome.min.css);
-.text-yellow {
-  color: #c2d735 !important; }
-
 .bg-dark {
   background-color: #16222A !important; }
 
@@ -27,10 +24,16 @@
   color: #ff0f2f !important; }
 
 .text-muted {
-  color: #57585a !important; }
+  color: #808285 !important; }
 
 .text-secondary {
   color: #808285 !important; }
+
+.text-info {
+  color: #0f4b66 !important; }
+
+.text-yellow {
+  color: #c2d735 !important; }
 
 .btn-primary {
   background-color: #0f4b66;
