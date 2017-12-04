@@ -1,5 +1,8 @@
 @import url(/bootstrap/dist/css/bootstrap.css);
 @import url(font-awesome.min.css);
+.text-yellow {
+  color: #c2d735 !important; }
+
 .bg-dark {
   background-color: #16222A !important; }
 
@@ -44,7 +47,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: geometricPrecision;
   color: ghostwhite;
-  background-color: #0f4b66; }
+  background-color: #808285; }
 
 a,
 .btn-link {
